@@ -90,3 +90,7 @@ export interface ApiResponse<T = any> {
   message: string;
   count?: number;
 }
+
+export interface BlogCardProps {
+  blog: Blog;
+}
