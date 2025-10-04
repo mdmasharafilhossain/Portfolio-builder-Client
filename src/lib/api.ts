@@ -1,4 +1,3 @@
-// lib/api.ts
 import { ApiResponse, Blog } from '@/types';
 import axios from 'axios';
 
