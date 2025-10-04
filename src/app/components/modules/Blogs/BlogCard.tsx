@@ -13,6 +13,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           <Image
             src={blog.imageUrl}
             alt={blog.title}
+            width={500}  // Set a width
+      height={300} // Set a height
+       blurDataURL="data:image/svg+xml;base64,..."
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           />
         </div>
