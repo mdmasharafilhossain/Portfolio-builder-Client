@@ -1,62 +1,114 @@
-
 import { BlogCardProps } from '@/types';
 import Link from 'next/link';
-import { Calendar, User } from 'lucide-react';
+import { Calendar, User, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
-
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+  // Brand Colors (assuming these are in your tailwind config as primary, but using hex for certainty)
+  const PRIMARY_TEXT = 'text-[#3E1E68]'; // Darker color for emphasis
+  const SECONDARY_ACCENT_TEXT = 'text-[#5D2F77]'; // Lighter color for hover/secondary elements
+
+  // Professional and Responsive Card Classes
+  const cardClasses = `
+    overflow-hidden
+    bg-white dark:bg-gray-900
+    rounded-xl
+    shadow-lg hover:shadow-2xl
+    group
+    transition-all duration-300
+    hover:scale-[1.015] // Subtle scale for professional feel
+    border border-gray-100 dark:border-gray-800
+    flex flex-col // Ensure the content stretches and stacks properly
+    h-full // Makes it easy to use in responsive grids
+  `;
+
   return (
-    <article className="card overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+    <article className={cardClasses}>
+      {/* 1. Responsive Image Section */}
       {blog.imageUrl && (
-        <div className="h-48 overflow-hidden">
+        <div className="h-48 md:h-56 overflow-hidden relative w-full"> {/* Adjust height responsively */}
           <Image
             src={blog.imageUrl}
             alt={blog.title}
-            width={500}  // Set a width
-      height={300} // Set a height
-       blurDataURL="data:image/svg+xml;base64,..."
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            fill={true} // Use fill for better responsive control in Next.js Image
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive image sizes
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,..."
+            className="
+              object-cover
+              group-hover:scale-110
+              transition-transform duration-500 ease-in-out
+            "
           />
         </div>
       )}
-      
-      <div className="p-6">
+
+      {/* 2. Content Area - Stacks Vertically */}
+      <div className="p-4 sm:p-6 flex flex-col flex-grow">
+        
+        {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-3">
           {blog.tags.slice(0, 2).map((tag, index) => (
             <span
               key={index}
-              className="px-2 py-1 bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 text-xs rounded"
+              className={`
+                px-3 py-1 text-xs font-medium rounded-full
+                bg-purple-100 ${PRIMARY_TEXT} dark:bg-[#5D2F77]/30 dark:text-[#5D2F77]
+                whitespace-nowrap // Prevents tags from breaking awkwardly
+              `}
             >
               {tag}
             </span>
           ))}
         </div>
-        
-        <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white line-clamp-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+
+        {/* Title */}
+        <h3 
+          className={`
+            text-xl sm:text-2xl font-bold mb-3
+            text-gray-900 dark:text-white line-clamp-2
+            group-hover:${SECONDARY_ACCENT_TEXT}
+            transition-colors
+          `}
+        >
           {blog.title}
         </h3>
-        
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+
+        {/* Excerpt */}
+        <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 flex-grow">
           {blog.excerpt}
         </p>
-        
-        <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
-          <div className="flex items-center space-x-1">
-            <User size={14} />
-            <span>{blog.author.name}</span>
+
+        {/* Metadata (Author & Date) - Flex container ensures good layout on small screens */}
+        <div className="
+          flex flex-wrap justify-between items-center text-xs sm:text-sm 
+          text-gray-500 dark:text-gray-400 
+          border-t border-gray-100 dark:border-gray-800 pt-3 sm:pt-4 
+          mt-auto gap-2
+        ">
+          <div className="flex items-center space-x-2">
+            <User size={16} className={PRIMARY_TEXT} /> 
+            <span className="font-medium text-gray-700 dark:text-gray-300">{blog.author.name}</span>
           </div>
-          <div className="flex items-center space-x-1">
-            <Calendar size={14} />
-            <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
+          <div className="flex items-center space-x-2">
+            <Calendar size={16} className={SECONDARY_ACCENT_TEXT} />
+            <span className="whitespace-nowrap">{new Date(blog.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
           </div>
         </div>
         
+        {/* Read More Link */}
         <Link
           href={`/blogs/${blog.slug}`}
-          className="inline-flex items-center space-x-2 text-primary-600 hover:text-primary-700 font-medium transition-colors"
+          className={`
+            mt-4 inline-flex items-center space-x-2
+            ${PRIMARY_TEXT} hover:text-[#5D2F77] 
+            font-semibold
+            transition-colors duration-200
+            w-max
+          `}
         >
           <span>Read More</span>
+          <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </article>
