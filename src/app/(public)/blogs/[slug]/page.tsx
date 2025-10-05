@@ -133,8 +133,8 @@ export default async function BlogPage({ params }: { params: { slug: string } })
                     src={blog.imageUrl}
                     alt={blog.title}
                     width={800}
-                    height={800}
-                    className="w-full h-auto md:h-64 object-cover transition-transform duration-500 hover:scale-105"
+                    height={400}
+                    className="w-full h-48 md:h-80 object-cover transition-transform duration-500 hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
                 </div>
