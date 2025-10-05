@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
  
-  // Premium Card Design
+
   const cardClasses = `
     overflow-hidden
     bg-white dark:bg-gray-900
@@ -24,7 +24,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
 
   return (
     <article className={cardClasses}>
-      {/* Image Container with Gradient Overlay */}
+    
       {blog?.imageUrl && (
         <div className="h-48 md:h-56 overflow-hidden relative w-full">
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -41,8 +41,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
               transition-transform duration-700 ease-out
             "
           />
-          
-          {/* Reading Time Badge */}
+       
           <div className="absolute top-4 right-4 z-20">
             <div className="flex items-center space-x-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
               <Clock size={14} className="text-[#5D2F77]" />
@@ -54,10 +53,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         </div>
       )}
 
-      {/* Content Area */}
+   
       <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20 bg-white dark:bg-gray-900">
         
-        {/* Enhanced Tags */}
+   
         <div className="flex flex-wrap gap-2 mb-4">
           {blog.tags.slice(0, 3).map((tag, index) => (
             <span
@@ -76,7 +75,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           ))}
         </div>
 
-        {/* Enhanced Title with Gradient Text */}
+      
         <h3 
           className={`
             text-xl sm:text-2xl font-bold mb-4
@@ -91,12 +90,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           {blog.title}
         </h3>
 
-        {/* Enhanced Excerpt */}
+
         <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 flex-grow leading-relaxed text-sm sm:text-base">
           {blog.excerpt}
         </p>
 
-        {/* Enhanced Metadata */}
+       
         <div className="
           flex flex-wrap justify-between items-center text-sm
           text-gray-500 dark:text-gray-400 
@@ -124,7 +123,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           </div>
         </div>
         
-        {/* Enhanced Read More Link */}
+    
         <Link
           href={`/blogs/${blog.slug}`}
           className={`
@@ -162,7 +161,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         </Link>
       </div>
 
-      {/* Subtle Glow Effect */}
+     
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3E1E68]/0 via-[#5D2F77]/0 to-[#8B5FBF]/0 group-hover:via-[#5D2F77]/5 group-hover:to-[#8B5FBF]/10 transition-all duration-500 pointer-events-none" />
     </article>
   );

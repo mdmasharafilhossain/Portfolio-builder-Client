@@ -7,7 +7,6 @@ import { Search, Sparkles, BookOpen } from 'lucide-react';
 // Enhanced Brand Colors with gradients
 const BRAND_PRIMARY = 'text-[#3E1E68]';
 const BRAND_SECONDARY = 'text-[#5D2F77]';
-const BRAND_GRADIENT = 'bg-gradient-to-r from-[#3E1E68] to-[#5D2F77]';
 
 async function getBlogs(): Promise<Blog[]> {
   try {
@@ -36,9 +35,9 @@ export default async function BlogsPage() {
         <div className="section-padding">
           <div className="container mx-auto max-w-7xl"> 
             
-            {/* Enhanced Header Section */}
+           
             <div className="text-center mb-20 relative">
-              {/* Decorative Elements */}
+            
               <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
                 <div className="w-20 h-20 bg-gradient-to-r from-[#3E1E68]/10 to-[#5D2F77]/10 rounded-full blur-xl"></div>
               </div>
@@ -66,7 +65,7 @@ export default async function BlogsPage() {
                   Discover thought-provoking articles, cutting-edge tutorials, and expert insights about web development, technology, and programming.
                 </p>
                 
-                {/* Stats Bar */}
+             
                 <div className="flex justify-center items-center space-x-8 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center space-x-2">
                     <BookOpen className="w-4 h-4 text-[#3E1E68]" />
@@ -81,7 +80,7 @@ export default async function BlogsPage() {
               </div>
             </div>
 
-            {/* Blog Grid Section */}
+       
             {blogs.length > 0 ? (
               <div className="relative">
                 {/* Grid Background Effect */}
@@ -91,13 +90,13 @@ export default async function BlogsPage() {
                   {blogs.map((blog, index) => (
                     <div 
                       key={blog.id}
-                      className="transform transition-all duration-500 hover:scale-[1.02]"
+                      className="transform transition-all duration-500 hover:scale-[1.02] animate-in fade-in-0 slide-in-from-bottom-10"
                       style={{
                         animationDelay: `${index * 100}ms`,
-                        animation: 'fadeInUp 0.6s ease-out forwards'
+                        animationDuration: '600ms'
                       }}
                     >
-                      <BlogCard key={blog?.id} blog={blog} />
+                      <BlogCard blog={blog} />
                     </div>
                   ))}
                 </div>
@@ -111,7 +110,7 @@ export default async function BlogsPage() {
                 </div>
               </div>
             ) : (
-              // Enhanced No Blogs State
+             
               <div className="text-center py-24 border-2 border-dashed border-gray-200 dark:border-gray-800 rounded-3xl mx-auto max-w-2xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
                 <div className="relative inline-block mb-6">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] rounded-full blur-lg opacity-20"></div>
@@ -129,8 +128,6 @@ export default async function BlogsPage() {
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 }
