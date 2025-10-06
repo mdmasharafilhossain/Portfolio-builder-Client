@@ -11,7 +11,9 @@ async function getBlog(slug: string): Promise<Blog | null> {
     const response = await blogAPI.getBySlug(slug);
     return response.data.data;
   } catch (error) {
+  
     return null;
+
   }
 }
 

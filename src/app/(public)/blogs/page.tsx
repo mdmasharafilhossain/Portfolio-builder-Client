@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // app/blogs/page.tsx
 import BlogCard from '@/app/components/modules/Blogs/BlogCard';
 import { blogAPI } from '@/lib/api';
@@ -16,6 +17,19 @@ async function getBlogs(): Promise<Blog[]> {
     console.error('Error fetching blogs:', error);
     return [];
   }
+}
+async function getAllBlogSlugs(): Promise<string[]> {
+  try {
+    const response = await blogAPI.getAll();
+    return response.data.data.map(blog => blog.slug);
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function generateStaticParams() {
+  const slugs = await getAllBlogSlugs();
+  return slugs.map(slug => ({ slug }));
 }
 
 export default async function BlogsPage() {
