@@ -14,11 +14,12 @@ import {
   LogOut,
   Settings
 } from 'lucide-react';
+import { useAuth } from '../../modules/auth/AuthContext';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-//   const { user, logout, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated ,loading} = useAuth();
 //   const { theme, toggleTheme } = useTheme();
 
   const navigation = [
@@ -29,13 +30,12 @@ const Navigation: React.FC = () => {
     { name: 'Contact', href: '/#contact' },
   ];
 
-//   const handleLogout = () => {
-//     logout();
-//     setIsProfileOpen(false);
-//   };
-const isAuthenticated = false;
-const user = { name: "John Doe" };
-const theme = 'light';
+  const handleLogout = () => {
+    logout();
+    setIsProfileOpen(false);
+  };
+console.log(user," user from nav");
+
   return (
     <nav className="bg-white/80 dark:bg-dark-800/80 backdrop-blur-md border-b border-gray-200 dark:border-dark-700 sticky top-0 z-50 ">
       <div className="container-custom container mx-auto ">
@@ -158,12 +158,12 @@ const theme = 'light';
                   >
                     Dashboard
                   </Link>
-                  {/* <button
+                  <button
                     onClick={handleLogout}
                     className="text-left text-red-600 hover:text-red-700 font-medium transition-colors duration-200 py-2"
                   >
                     Logout
-                  </button> */}
+                  </button>
                 </>
               ) : (
                 <Link

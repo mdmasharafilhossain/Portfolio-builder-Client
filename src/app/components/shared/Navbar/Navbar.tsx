@@ -1,7 +1,9 @@
+"use client";
 import Navigation from "./Navigation";
 
 
 const Navbar = () => {
+    
     return (
         <div >
             <Navigation/>
