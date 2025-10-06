@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { User } from '@/types';
 import { authAPI } from '@/lib/api';
 import Swal from 'sweetalert2';
@@ -22,15 +22,35 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  // Fetch current user on mount
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await authAPI.getProfile(); // GET /auth/profile
+        if (response.data.success) {
+          setUser(response.data.data); // set user from backend
+        } else {
+          setUser(null);
+        }
+      } catch (err) {
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchUser();
+  }, []);
   // ✅ Login
   const login = async (email: string, password: string) => {
     try {
       setLoading(true);
       const response = await authAPI.login(email, password);
-
+        
       if (response.data.success) {
-        setUser(response.data?.data?.user);
+        const { user } = response.data.data;
+        setUser(user);
+        console.log(user," user after login");
         await Swal.fire({
           icon: 'success',
           title: 'Welcome back!',

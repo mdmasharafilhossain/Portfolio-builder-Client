@@ -14,11 +14,12 @@ import {
   LogOut,
   Settings
 } from 'lucide-react';
+import { useAuth } from '../../modules/auth/AuthContext';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-//   const { user, logout, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated } = useAuth();
 //   const { theme, toggleTheme } = useTheme();
 
   const navigation = [
@@ -33,9 +34,7 @@ const Navigation: React.FC = () => {
 //     logout();
 //     setIsProfileOpen(false);
 //   };
-const isAuthenticated = false;
-const user = { name: "John Doe" };
-const theme = 'light';
+console.log(user," user from nav");
   return (
     <nav className="bg-white/80 dark:bg-dark-800/80 backdrop-blur-md border-b border-gray-200 dark:border-dark-700 sticky top-0 z-50 ">
       <div className="container-custom container mx-auto ">
@@ -75,7 +74,7 @@ const theme = 'light';
             </button> */}
 
             {/* Auth Section */}
-            {isAuthenticated ? (
+            {user ? (
               <div className="relative">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -96,7 +95,7 @@ const theme = 'light';
                       <span>Dashboard</span>
                     </Link>
                     <button
-                      onClick={handleLogout}
+                      // onClick={handleLogout}
                       className="flex items-center space-x-2 w-full px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-dark-700 transition-colors duration-200"
                     >
                       <LogOut size={16} />
