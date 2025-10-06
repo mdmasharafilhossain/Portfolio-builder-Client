@@ -4,7 +4,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { User } from '@/types';
 import { authAPI } from '@/lib/api';
-import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+
 
 interface AuthContextType {
   user: User | null;
@@ -22,44 +23,65 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  
-
+  // ✅ Login
   const login = async (email: string, password: string) => {
     try {
       setLoading(true);
       const response = await authAPI.login(email, password);
+
       if (response.data.success) {
-       
         setUser(response.data?.data?.user);
-        
-        toast.success('Welcome back!');
+        await Swal.fire({
+          icon: 'success',
+          title: 'Welcome back!',
+          text: `Hello, ${response.data?.data?.user?.name || 'User'} 👋`,
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
     } catch (error: any) {
       const message = error.response?.data?.message || 'Login failed';
-      toast.error(message);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: message,
+      });
       throw error;
     } finally {
       setLoading(false);
     }
   };
 
+  // ✅ Register
   const register = async (email: string, password: string, name: string) => {
     try {
       setLoading(true);
       const response = await authAPI.register(email, password, name);
+
       if (response.data.success) {
         setUser(response.data.data.user);
-        toast.success('Account created successfully!');
+        await Swal.fire({
+          icon: 'success',
+          title: 'Account Created!',
+          text: 'Your account has been created successfully.',
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
     } catch (error: any) {
       const message = error.response?.data?.message || 'Registration failed';
-      toast.error(message);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Registration Failed',
+        text: message,
+      });
       throw error;
     } finally {
       setLoading(false);
     }
   };
 
+  // ✅ Logout
   const logout = async () => {
     try {
       await authAPI.logout();
@@ -67,10 +89,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       console.error('Logout error:', error);
     } finally {
       setUser(null);
-      toast.success('Logged out successfully');
+      await Swal.fire({
+        icon: 'info',
+        title: 'Logged out successfully',
+        timer: 1500,
+        showConfirmButton: false,
+      });
     }
   };
 
+  // ✅ Update user info in context
   const updateUser = (userData: Partial<User>) => {
     setUser(prev => (prev ? { ...prev, ...userData } : null));
   };
@@ -85,13 +113,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     updateUser,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
+// ✅ Custom hook
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
