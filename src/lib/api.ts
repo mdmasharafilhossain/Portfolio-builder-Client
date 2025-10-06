@@ -3,22 +3,38 @@ import axios from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
-// Create axios instance with credentials
 export const api = axios.create({
   baseURL: API_BASE_URL,
-  withCredentials: true, // This is crucial for cookies to be sent automatically
+  withCredentials: true,
 });
 
-// Request interceptor to handle errors globally
+// Enhanced request interceptor
+api.interceptors.request.use(
+  (config) => config,
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Enhanced response interceptor with better error handling
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      // Token expired or invalid - redirect to login
+    // Don't redirect on login page or public pages
+    const isAuthPage = typeof window !== 'undefined' && 
+      (window.location.pathname === '/login' || window.location.pathname === '/register');
+    
+    const isPublicPage = typeof window !== 'undefined' && 
+      !window.location.pathname.startsWith('/admin') && 
+      !window.location.pathname.startsWith('/dashboard');
+
+    if (error.response?.status === 401 && !isAuthPage && !isPublicPage) {
+      // Only redirect if we're on a protected page
       if (typeof window !== 'undefined') {
         window.location.href = '/login';
       }
     }
+    
     return Promise.reject(error);
   }
 );

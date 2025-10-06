@@ -8,12 +8,13 @@ export default function PublicLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <> <AuthProvider>
       <Navbar />
-      <AuthProvider>
+     
       <main className="min-h-dvh">{children}</main>
-      </AuthProvider>
+      
       <Footer />
+      </AuthProvider>
     </>
   );
 }

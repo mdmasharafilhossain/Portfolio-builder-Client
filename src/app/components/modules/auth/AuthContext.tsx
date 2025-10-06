@@ -24,23 +24,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [loading, setLoading] = useState(true);
   // Fetch current user on mount
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await authAPI.getProfile(); // GET /auth/profile
-        if (response.data.success) {
-          setUser(response.data.data); // set user from backend
-        } else {
-          setUser(null);
-        }
-      } catch (err) {
-        setUser(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUser();
+    checkAuth();
   }, []);
+
+  const checkAuth = async () => {
+    try {
+      const response = await authAPI.verify();
+      if (response.data.success) {
+        setUser(response.data.data.user);
+      } else {
+        // If verify returns success: false, clear user
+        setUser(null);
+      }
+    } catch (error: any) {
+      console.error('Auth check failed:', error);
+      // Clear user on any error (token expired, network error, etc.)
+      setUser(null);
+      
+      // Only show toast for specific errors, not for general auth failures
+      if (error.response?.status !== 401 && error.response?.status !== 403) {
+        console.warn('Authentication check failed:', error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
   // ✅ Login
   const login = async (email: string, password: string) => {
     try {
