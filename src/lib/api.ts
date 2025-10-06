@@ -1,4 +1,4 @@
-import { ApiResponse, Blog, Project } from '@/types';
+import { About, ApiResponse, Blog, Project } from '@/types';
 import axios from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
@@ -69,9 +69,9 @@ export const projectAPI = {
 };
 
 // About API
-// export const aboutAPI = {
-//   get: () => api.get<ApiResponse<About>>('/about'),
-//   getSummary: () => api.get<ApiResponse<Partial<About>>>('/about/summary'),
-//   update: (data: Partial<About>) => api.put<ApiResponse<About>>('/admin/about', data),
-//   upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/admin/about', data),
-// };
+export const aboutAPI = {
+  get: () => api.get<ApiResponse<About>>('/about'),
+  getSummary: () => api.get<ApiResponse<Partial<About>>>('/about/summary'),
+  update: (data: Partial<About>) => api.put<ApiResponse<About>>('/admin/about', data),
+  upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/admin/about', data),
+};
