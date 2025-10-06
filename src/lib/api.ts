@@ -1,4 +1,4 @@
-import { ApiResponse, Blog } from '@/types';
+import { About, ApiResponse, Blog, Project } from '@/types';
 import axios from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
@@ -58,20 +58,20 @@ export const blogAPI = {
 };
 
 // Project API
-// export const projectAPI = {
-//   getAll: () => api.get<ApiResponse<Project[]>>('/projects'),
-//   getFeatured: () => api.get<ApiResponse<Project[]>>('/projects/featured'),
-//   getById: (id: string) => api.get<ApiResponse<Project>>(`/projects/${id}`),
-//   create: (data: Partial<Project>) => api.post<ApiResponse<Project>>('/admin/projects', data),
-//   update: (id: string, data: Partial<Project>) => api.put<ApiResponse<Project>>(`/admin/projects/${id}`, data),
-//   delete: (id: string) => api.delete<ApiResponse>(`/admin/projects/${id}`),
-//   toggleFeatured: (id: string) => api.patch<ApiResponse<Project>>(`/admin/projects/${id}/featured`),
-// };
+export const projectAPI = {
+  getAll: () => api.get<ApiResponse<Project[]>>('/projects'),
+  getFeatured: () => api.get<ApiResponse<Project[]>>('/projects/featured'),
+  getById: (id: string) => api.get<ApiResponse<Project>>(`/projects/${id}`),
+  create: (data: Partial<Project>) => api.post<ApiResponse<Project>>('/admin/projects', data),
+  update: (id: string, data: Partial<Project>) => api.put<ApiResponse<Project>>(`/admin/projects/${id}`, data),
+  delete: (id: string) => api.delete<ApiResponse>(`/admin/projects/${id}`),
+  toggleFeatured: (id: string) => api.patch<ApiResponse<Project>>(`/admin/projects/${id}/featured`),
+};
 
 // About API
-// export const aboutAPI = {
-//   get: () => api.get<ApiResponse<About>>('/about'),
-//   getSummary: () => api.get<ApiResponse<Partial<About>>>('/about/summary'),
-//   update: (data: Partial<About>) => api.put<ApiResponse<About>>('/admin/about', data),
-//   upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/admin/about', data),
-// };
+export const aboutAPI = {
+  get: () => api.get<ApiResponse<About>>('/about'),
+  getSummary: () => api.get<ApiResponse<Partial<About>>>('/about/summary'),
+  update: (data: Partial<About>) => api.put<ApiResponse<About>>('/admin/about', data),
+  upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/admin/about', data),
+};

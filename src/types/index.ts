@@ -94,3 +94,7 @@ export interface ApiResponse<T = any> {
 export interface BlogCardProps {
   blog: Blog;
 }
+export interface ProjectCardProps {
+  project: Project;
+  featured?: boolean;
+}
