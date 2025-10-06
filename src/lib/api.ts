@@ -1,4 +1,4 @@
-import { About, ApiResponse, Blog, Project } from '@/types';
+import { About, ApiResponse, AuthResponse, Blog, Project, User } from '@/types';
 import axios from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
@@ -24,28 +24,28 @@ api.interceptors.response.use(
 );
 
 // Auth API
-// export const authAPI = {
-//   login: (email: string, password: string) =>
-//     api.post<ApiResponse<AuthResponse>>('/auth/login', { email, password }),
+export const authAPI = {
+  login: (email: string, password: string) =>
+    api.post<ApiResponse<AuthResponse>>('/auth/login', { email, password }),
   
-//   register: (email: string, password: string, name: string) =>
-//     api.post<ApiResponse<AuthResponse>>('/auth/register', { email, password, name }),
+  register: (email: string, password: string, name: string) =>
+    api.post<ApiResponse<AuthResponse>>('/auth/register', { email, password, name }),
 
-//   getProfile: () =>
-//     api.get<ApiResponse<User>>('/auth/profile'),
+  getProfile: () =>
+    api.get<ApiResponse<User>>('/auth/profile'),
 
-//   updateProfile: (data: Partial<User>) =>
-//     api.put<ApiResponse<User>>('/auth/profile', data),
+  updateProfile: (data: Partial<User>) =>
+    api.put<ApiResponse<User>>('/auth/profile', data),
 
-//   changePassword: (data: { currentPassword: string; newPassword: string }) =>
-//     api.put<ApiResponse>('/auth/change-password', data),
+  changePassword: (data: { currentPassword: string; newPassword: string }) =>
+    api.put<ApiResponse>('/auth/change-password', data),
 
-//   logout: () =>
-//     api.post<ApiResponse>('/auth/logout'),
+  logout: () =>
+    api.post<ApiResponse>('/auth/logout'),
 
-//   verify: () =>
-//     api.get<ApiResponse<{ user: User }>>('/auth/verify'),
-// };
+  verify: () =>
+    api.get<ApiResponse<{ user: User }>>('/auth/verify'),
+};
 
 // Blog API
 export const blogAPI = {
