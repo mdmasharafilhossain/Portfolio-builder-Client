@@ -98,3 +98,10 @@ export interface ProjectCardProps {
   project: Project;
   featured?: boolean;
 }
+export interface RichTextEditorProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+  height?: number;
+  error?: string;
+}
