@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 'use client';
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 import { Plus, Edit, Trash2, Eye, Search, Filter, Star, ExternalLink, Github, Code,  BarChart3 } from 'lucide-react';
 import Image from 'next/image';
 import ProjectEditor from './ProjectEditor';
+import { Loader } from '@/components/shared/Loader';
 
 const MySwal = Swal;
 
@@ -149,21 +151,7 @@ const ProjectManagement: React.FC = () => {
   const normalProjects = filteredProjects.filter(project => !project.featured);
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-[#F8F5FF] to-gray-100 dark:from-gray-950 dark:via-[#1a1033] dark:to-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="relative">
-            <div className="w-16 h-16 border-4 border-[#3E1E68]/20 border-t-[#3E1E68] border-r-[#5D2F77] rounded-full animate-spin"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-lg font-bold bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] bg-clip-text text-transparent">
-                Portfolio
-              </span>
-            </div>
-          </div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading your projects...</p>
-        </div>
-      </div>
-    );
+    return <Loader/>
   }
 
   if (showEditor) {
@@ -184,9 +172,7 @@ const ProjectManagement: React.FC = () => {
         <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-gray-800 shadow-2xl p-8 mb-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-center space-x-4 mb-6 lg:mb-0">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] rounded-2xl flex items-center justify-center shadow-lg">
-                <Code className="text-white" size={28} />
-              </div>
+              
               <div>
                 <h1 className="text-3xl font-black text-gray-900 dark:text-white">
                   Project <span className="bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] bg-clip-text text-transparent">Management</span>
