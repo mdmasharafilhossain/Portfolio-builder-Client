@@ -117,12 +117,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       console.error('Logout error:', error);
     } finally {
       setUser(null);
-      await Swal.fire({
-        icon: 'info',
-        title: 'Logged out successfully',
-        timer: 1500,
-        showConfirmButton: false,
-      });
+      
     }
   };
 

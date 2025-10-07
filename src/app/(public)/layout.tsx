@@ -1,5 +1,6 @@
 import { AuthProvider } from "../components/modules/auth/AuthContext";
 import Footer from "../components/shared/Footer";
+
 import Navbar from "../components/shared/Navbar/Navbar";
 
 export default function PublicLayout({
@@ -7,8 +8,13 @@ export default function PublicLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
+ 
   return (
-    <> <AuthProvider>
+    <> 
+    
+    <AuthProvider>
       <Navbar />
      
       <main className="min-h-dvh">{children}</main>

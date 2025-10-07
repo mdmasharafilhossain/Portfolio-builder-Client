@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../modules/auth/AuthContext';
 import { Loader } from '../Loader';
+import Swal from 'sweetalert2';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,9 +31,45 @@ const Navigation: React.FC = () => {
   ];
 
   const handleLogout = async () => {
-    await logout();
-    setIsProfileOpen(false);
-  };
+
+  const result = await Swal.fire({
+    title: 'Are you sure?',
+    text: 'You will be logged out from your account.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3E1E68',
+    cancelButtonColor: '#6B7280',
+    confirmButtonText: 'Yes, Logout',
+    cancelButtonText: 'Cancel',
+    background: '#fff',
+  });
+
+  if (result.isConfirmed) {
+    try {
+      await logout();
+      setIsProfileOpen(false);
+
+      
+      await Swal.fire({
+        title: 'Logged out successfully!',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+        background: '#fff',
+      });
+    } catch (error) {
+      console.error('Logout error:', error);
+
+     
+      Swal.fire({
+        title: 'Error!',
+        text: 'Something went wrong while logging out.',
+        icon: 'error',
+        confirmButtonColor: '#3E1E68',
+      });
+    }
+  }
+};
 
   console.log(user," user from nav");
 
