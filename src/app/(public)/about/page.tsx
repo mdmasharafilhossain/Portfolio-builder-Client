@@ -1,6 +1,6 @@
-import ExperienceTimeline from '@/app/components/modules/about/ExperienceTimeline';
-import SkillsByCategory from '@/app/components/modules/about/SkillsByCategory';
-import SocialLinks from '@/app/components/modules/about/SocialLinks';
+import ExperienceTimeline from '@/components/modules/about/ExperienceTimeline';
+import SkillsByCategory from '@/components/modules/about/SkillsByCategory';
+import SocialLinks from '@/components/modules/about/SocialLinks';
 import { aboutAPI } from '@/lib/api';
 import { About, Skill, Experience, SocialLink } from '@/types';
 import { 
