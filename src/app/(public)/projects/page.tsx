@@ -1,4 +1,4 @@
-import ProjectCard from '@/app/components/modules/project/ProjectCard';
+import ProjectCard from '@/components/modules/project/ProjectCard';
 import { projectAPI } from '@/lib/api';
 import { Project } from '@/types';
 import { Sparkles, Grid3X3 } from 'lucide-react';

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// app/blogs/page.tsx
-import BlogCard from '@/app/components/modules/Blogs/BlogCard';
+
+import BlogCard from '@/components/modules/Blogs/BlogCard';
 import { blogAPI } from '@/lib/api';
 import { Blog } from '@/types';
 import { Search, Sparkles, BookOpen } from 'lucide-react';
