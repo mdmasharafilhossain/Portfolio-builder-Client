@@ -1,10 +1,10 @@
-// components/layout/Footer.tsx
+
 'use client';
 
 import React from 'react';
 import Link from 'next/link';
 
-import { Sun, Moon, Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const Footer: React.FC = () => {
 
