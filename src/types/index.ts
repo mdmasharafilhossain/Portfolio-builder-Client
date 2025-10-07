@@ -98,3 +98,35 @@ export interface ProjectCardProps {
   project: Project;
   featured?: boolean;
 }
+export interface RichTextEditorProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+  height?: number;
+  error?: string;
+  ref?:string
+}
+
+export type BlogFormData = {
+  title: string;
+  content: string;
+  excerpt: string;
+  slug: string;
+  imageUrl: string;
+  tags?: string;
+  published: boolean;
+};
+
+export interface BlogEditorProps {
+  blog?: Blog | null;
+  onSave: (blog: Blog) => void;
+  onCancel: () => void;
+  mode: 'create' | 'edit';
+}
+
+export interface ProjectEditorProps {
+  project?: Project | null;
+  onSave: (project: Project) => void;
+  onCancel: () => void;
+  mode: 'create' | 'edit';
+}

@@ -67,10 +67,10 @@ export const authAPI = {
 export const blogAPI = {
   getAll: () => api.get<ApiResponse<Blog[]>>('/blogs'),
   getBySlug: (slug: string) => api.get<ApiResponse<Blog>>(`/blogs/${slug}`),
-//   create: (data: Partial<Blog>) => api.post<ApiResponse<Blog>>('/admin/blogs', data),
-//   update: (id: string, data: Partial<Blog>) => api.put<ApiResponse<Blog>>(`/admin/blogs/${id}`, data),
-//   delete: (id: string) => api.delete<ApiResponse>(`/admin/blogs/${id}`),
-//   getAllAdmin: () => api.get<ApiResponse<Blog[]>>('/admin/blogs'),
+  create: (data: Partial<Blog>) => api.post<ApiResponse<Blog>>('/blogs', data),
+  update: (id: string, data: Partial<Blog>) => api.put<ApiResponse<Blog>>(`/blogs/${id}`, data),
+  delete: (id: string) => api.delete<ApiResponse>(`/blogs/${id}`),
+  getAllAdmin: () => api.get<ApiResponse<Blog[]>>('/blogs/admin/all'),
 };
 
 // Project API
