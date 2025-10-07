@@ -3,7 +3,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Project, ProjectCardProps } from '@/types';
+import { Project, ProjectCardPropsAgain } from '@/types';
 import { projectAPI } from '@/lib/api';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
@@ -360,7 +360,7 @@ const ProjectManagement: React.FC = () => {
 
 
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ 
+const ProjectCard: React.FC<ProjectCardPropsAgain> = ({ 
   project, 
   onEdit, 
   onDelete, 

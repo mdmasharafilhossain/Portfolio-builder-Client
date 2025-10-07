@@ -131,7 +131,7 @@ export interface ProjectEditorProps {
   mode: 'create' | 'edit';
 }
 
-export  interface ProjectCardProps {
+export  interface ProjectCardPropsAgain {
   project: Project;
   onEdit: (project: Project) => void;
   onDelete: (id: string, title: string) => void;
