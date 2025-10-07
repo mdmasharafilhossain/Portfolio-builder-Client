@@ -30,8 +30,8 @@ const Navigation: React.FC = () => {
     { name: 'Contact', href: '/#contact' },
   ];
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     setIsProfileOpen(false);
   };
 console.log(user," user from nav");
