@@ -106,3 +106,20 @@ export interface RichTextEditorProps {
   error?: string;
   ref?:string
 }
+
+export type BlogFormData = {
+  title: string;
+  content: string;
+  excerpt: string;
+  slug: string;
+  imageUrl: string;
+  tags?: string;
+  published: boolean;
+};
+
+export interface BlogEditorProps {
+  blog?: Blog | null;
+  onSave: (blog: Blog) => void;
+  onCancel: () => void;
+  mode: 'create' | 'edit';
+}
