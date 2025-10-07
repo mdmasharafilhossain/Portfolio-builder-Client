@@ -130,3 +130,10 @@ export interface ProjectEditorProps {
   onCancel: () => void;
   mode: 'create' | 'edit';
 }
+
+export  interface ProjectCardProps {
+  project: Project;
+  onEdit: (project: Project) => void;
+  onDelete: (id: string, title: string) => void;
+  onToggleFeatured: (project: Project) => void;
+}

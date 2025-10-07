@@ -3,7 +3,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Project } from '@/types';
+import { Project, ProjectCardProps } from '@/types';
 import { projectAPI } from '@/lib/api';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
@@ -358,13 +358,7 @@ const ProjectManagement: React.FC = () => {
   );
 };
 
-// Project Card Component for Management View
-interface ProjectCardProps {
-  project: Project;
-  onEdit: (project: Project) => void;
-  onDelete: (id: string, title: string) => void;
-  onToggleFeatured: (project: Project) => void;
-}
+
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
   project, 
