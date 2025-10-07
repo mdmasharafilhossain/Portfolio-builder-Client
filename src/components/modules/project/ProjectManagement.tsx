@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// components/admin/ProjectManagement.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -8,7 +8,7 @@ import { projectAPI } from '@/lib/api';
 import toast from 'react-hot-toast';
 
 import { Plus, Edit, Trash2, Eye, Search, Filter, Star, ExternalLink, Github } from 'lucide-react';
-import { ImageConfigContext } from 'next/dist/shared/lib/image-config-context.shared-runtime';
+
 import Image from 'next/image';
 import ProjectEditor from './ProjectEditor';
 

@@ -123,3 +123,10 @@ export interface BlogEditorProps {
   onCancel: () => void;
   mode: 'create' | 'edit';
 }
+
+export interface ProjectEditorProps {
+  project?: Project | null;
+  onSave: (project: Project) => void;
+  onCancel: () => void;
+  mode: 'create' | 'edit';
+}

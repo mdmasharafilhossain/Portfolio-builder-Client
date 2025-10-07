@@ -1,35 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// components/editor/ProjectEditor.tsx
+
 'use client';
 
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Project } from '@/types';
+import {  ProjectEditorProps } from '@/types';
 import { projectAPI } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { Save, X, Eye, Plus, Trash2 } from 'lucide-react';
 import Image from 'next/image';
+import { projectSchema } from '@/lib/schema';
 
-interface ProjectEditorProps {
-  project?: Project | null;
-  onSave: (project: Project) => void;
-  onCancel: () => void;
-  mode: 'create' | 'edit';
-}
 
-const projectSchema = z.object({
-  title: z.string().min(1, 'Title is required').max(78, 'Title too long'),
-    description: z.string().min(1, 'Description is required').max(500, 'Description too long'),
-    longDescription: z.string().min(1, 'Long description is required'),
-    technologies: z.array(z.string()).min(1, 'At least one technology is required'),
-  projectUrl: z.string().url('Project URL must be valid').optional().or(z.literal('')),
-  githubUrl: z.string().url('GitHub URL must be valid').optional().or(z.literal('')),
-  liveUrl: z.string().url('Live Demo URL must be valid').optional().or(z.literal('')),
-  featured: z.boolean(),
-  imageUrl: z.string().url('Image URL must be valid').optional().or(z.literal('')),
-});
+
+
 
 type ProjectFormValues = z.infer<typeof projectSchema>;
 
