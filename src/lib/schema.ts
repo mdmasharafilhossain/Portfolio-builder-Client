@@ -16,3 +16,15 @@ export const blogSchema = z.object({
   ...data,
   published: data.published ?? true,
 }));
+
+export const projectSchema = z.object({
+  title: z.string().min(1, 'Title is required').max(78, 'Title too long'),
+    description: z.string().min(1, 'Description is required').max(500, 'Description too long'),
+    longDescription: z.string().min(1, 'Long description is required'),
+    technologies: z.array(z.string()).min(1, 'At least one technology is required'),
+  projectUrl: z.string().url('Project URL must be valid').optional().or(z.literal('')),
+  githubUrl: z.string().url('GitHub URL must be valid').optional().or(z.literal('')),
+  liveUrl: z.string().url('Live Demo URL must be valid').optional().or(z.literal('')),
+  featured: z.boolean(),
+  imageUrl: z.string().url('Image URL must be valid').optional().or(z.literal('')),
+});

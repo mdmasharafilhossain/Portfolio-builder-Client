@@ -20,10 +20,10 @@ interface ProjectEditorProps {
 }
 
 const projectSchema = z.object({
-  title: z.string().min(3, 'Title must be at least 3 characters'),
-  description: z.string().min(5, 'Description is required'),
-  longDescription: z.string().min(5, 'Detailed description is required'),
-  technologies: z.array(z.string()).min(1, 'Add at least one technology'),
+  title: z.string().min(1, 'Title is required').max(78, 'Title too long'),
+    description: z.string().min(1, 'Description is required').max(500, 'Description too long'),
+    longDescription: z.string().min(1, 'Long description is required'),
+    technologies: z.array(z.string()).min(1, 'At least one technology is required'),
   projectUrl: z.string().url('Project URL must be valid').optional().or(z.literal('')),
   githubUrl: z.string().url('GitHub URL must be valid').optional().or(z.literal('')),
   liveUrl: z.string().url('Live Demo URL must be valid').optional().or(z.literal('')),
@@ -38,7 +38,7 @@ const ProjectEditor: React.FC<ProjectEditorProps> = ({ project, onSave, onCancel
   const [loading, setLoading] = useState(false);
   const [newTech, setNewTech] = useState('');
 
-  const { register, handleSubmit, control, setValue, watch, formState: { errors } } = useForm<ProjectFormValues>({
+  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<ProjectFormValues>({
     resolver: zodResolver(projectSchema),
     defaultValues: {
       title: project?.title || '',
