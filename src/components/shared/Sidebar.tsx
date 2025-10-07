@@ -41,10 +41,10 @@ const Sidebar = () => {
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Create Blog', href: '/dashboard/create-blog', icon: Plus },
+    { name: 'Blog Management', href: '/dashboard/create-blog', icon: Plus },
     { name: 'All Projects', href: '/dashboard/projects', icon: FolderOpen },
     { name: 'About Me', href: '/dashboard/about', icon: User },
-    { name: 'Blog Posts', href: '/dashboard/blogs', icon: FileText },
+    // { name: 'Blog Posts', href: '/dashboard/blogs', icon: FileText },
   ];
 
   const isActiveRoute = (href: string) => {
@@ -153,16 +153,7 @@ const Sidebar = () => {
           </div>
 
           <div className="space-y-2">
-            <Link
-              href="/dashboard/settings"
-              onClick={() => setIsMobileOpen(false)}
-              className={`flex items-center space-x-3 p-3 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] transition-all duration-200 ${
-                isCollapsed ? 'justify-center' : ''
-              }`}
-            >
-              <Settings size={18} />
-              {!isCollapsed && <span className="font-medium">Settings</span>}
-            </Link>
+            
 
             <button
               onClick={handleLogout}
