@@ -1,10 +1,11 @@
 
+import BlogManagement from '@/components/modules/Blogs/BlogManagement';
 import React from 'react';
 
 const CreateBlogPost = () => {
     return (
         <div>
-            <h1>Hello</h1>
+            <BlogManagement/>
         </div>
     );
 };

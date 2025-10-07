@@ -61,19 +61,20 @@ const Sidebar = () => {
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="md:hidden fixed top-4 left-4 z-50 bg-white dark:bg-gray-900 p-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
+        className="md:hidden fixed top-4 left-1 z-50 bg-white dark:bg-gray-900 p-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
       >
         <Menu size={20} className="text-[#5D2F77]" />
       </button>
 
       {/* Sidebar */}
       <div
-        className={`bg-white dark:bg-gray-900/90 backdrop-blur-xl border-r border-gray-200 dark:border-gray-800 shadow-2xl transition-all duration-300 flex flex-col
-        ${isCollapsed ? 'w-20' : 'w-64'}
-        h-full md:h-screen fixed md:relative z-40 md:z-auto
-        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
-        md:transition-none transform`}
-      >
+  className={`bg-white dark:bg-gray-900/90 backdrop-blur-xl border-r border-gray-200 dark:border-gray-800 shadow-2xl transition-all duration-300 flex flex-col
+  ${isCollapsed ? 'w-20' : 'w-64'}
+  fixed md:sticky top-0 left-0 h-screen z-40
+  ${isMobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+  md:transition-none transform`}
+>
+
         {/* Header */}
         <div className="p-6 border-b border-gray-200 dark:border-gray-800">
           <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'}`}>

@@ -1,13 +1,14 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React, { useMemo, useRef } from 'react';
-import ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 import './quill-custom.css';
 import { RichTextEditorProps } from '@/types';
 
-
+// ✅ Load ReactQuill only on the client
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({
   value,
@@ -16,40 +17,36 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
   height = 400,
   error,
 }) => {
-  const quillRef = useRef<ReactQuill>(null);
+  const quillRef = useRef<any>(null);
 
   // Custom image handler
   const imageHandler = () => {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
-    input.click();
+  if (typeof document === 'undefined') return;
 
-    input.onchange = async () => {
-      if (input.files && input.files[0]) {
-        const file = input.files[0];
-        
-        // In a real application, you would upload the image to your server
-        // For now, we'll create a base64 data URL
-        const reader = new FileReader();
-        
-        reader.onload = (e) => {
-          if (e.target?.result && quillRef.current) {
-            const quill = quillRef.current.getEditor();
-            const range = quill.getSelection();
-            const imageUrl = e.target.result as string;
-            
-            // Insert the image at the cursor position
-            quill.insertEmbed(range?.index || 0, 'image', imageUrl);
-          }
-        };
-        
-        reader.readAsDataURL(file);
-      }
-    };
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.click();
+
+  input.onchange = async () => {
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const quill = quillRef.current?.__quill || quillRef.current?.getEditor?.();
+        if (e.target?.result && quill) {
+          const range = quill.getSelection(true);
+          quill.insertEmbed(range?.index || 0, 'image', e.target.result as string);
+        }
+      };
+
+      reader.readAsDataURL(file);
+    }
   };
+};
 
-  // Editor modules configuration
+
   const modules = useMemo(() => ({
     toolbar: {
       container: [
@@ -58,24 +55,19 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
         [{ 'size': ['small', false, 'large', 'huge'] }],
         ['bold', 'italic', 'underline', 'strike'],
         [{ 'color': [] }, { 'background': [] }],
-        [{ 'script': 'sub'}, { 'script': 'super' }],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'indent': '-1'}, { 'indent': '+1' }],
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
         [{ 'align': [] }],
         ['blockquote', 'code-block'],
         ['link', 'image', 'video'],
         ['clean']
       ],
-      handlers: {
-        image: imageHandler
-      }
+      handlers: { image: imageHandler }
     },
-    clipboard: {
-      matchVisual: false,
-    }
+    clipboard: { matchVisual: false }
   }), []);
 
-  // Editor formats
   const formats = [
     'header', 'font', 'size',
     'bold', 'italic', 'underline', 'strike',
@@ -89,19 +81,28 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 
   return (
     <div className="w-full">
-      <div className={`border border-gray-300 dark:border-dark-600 rounded-lg overflow-hidden ${
-        error ? 'border-red-500 dark:border-red-500' : ''
-      }`}>
+      <div
+        className={`border border-gray-300 dark:border-dark-600 rounded-lg overflow-hidden ${
+          error ? 'border-red-500 dark:border-red-500' : ''
+        }`}
+      >
+        
         <ReactQuill
-          ref={quillRef}
-          value={value}
-          onChange={onChange}
-          modules={modules}
-          formats={formats}
-          placeholder={placeholder}
-          style={{ height: `${height}px` }}
-          theme="snow"
-        />
+  value={value}
+  onChange={onChange}
+  modules={modules}
+  formats={formats}
+  placeholder={placeholder}
+  style={{ height: `${height}px` }}
+  theme="snow"
+  onChangeSelection={() => {
+    // Ensure quillRef is correctly assigned
+    if (!quillRef.current) {
+      const editor = document.querySelector('.ql-editor');
+      if (editor) quillRef.current = editor;
+    }
+  }}
+/>
       </div>
       {error && (
         <p className="mt-1 text-sm text-red-600 dark:text-red-400">{error}</p>

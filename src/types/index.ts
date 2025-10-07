@@ -104,4 +104,5 @@ export interface RichTextEditorProps {
   placeholder?: string;
   height?: number;
   error?: string;
+  ref?:string
 }
