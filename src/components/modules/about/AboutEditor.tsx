@@ -3,14 +3,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useForm, useFieldArray, Controller } from 'react-hook-form';
+import { useForm, useFieldArray} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { About, SocialLink, Skill, Experience } from '@/types';
+import { About} from '@/types';
 import { aboutAPI } from '@/lib/api';
 
 import Swal from 'sweetalert2';
-import { Save, Plus, Trash2, Eye, Link, Code, Building, Calendar } from 'lucide-react';
+import { Save, Plus, Trash2, Eye } from 'lucide-react';
 import { AboutFormData, aboutFormSchema } from '@/lib/schema';
 
 interface AboutEditorProps {

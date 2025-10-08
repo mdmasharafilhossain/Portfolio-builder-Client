@@ -42,44 +42,45 @@ export interface Project {
   updatedAt: string;
 }
 
-export interface About {
-  id: string;
-  name: string;
-  title: string;
-  bio: string;
-  email: string;
-  phone?: string | null;
-  location?: string | null;
-  avatarUrl?: string | null;
-  resumeUrl?: string | null;
-  socialLinks: SocialLink[];
-  skills: Skill[];
-  experiences: Experience[];
-}
+// export interface About {
+//   id: string;
+//   name: string;
+//   title: string;
+//   bio: string;
+//   email: string;
+//   phone?: string | null;
+//   location?: string | null;
+//   avatarUrl?: string | null;
+//   resumeUrl?: string | null;
+//   socialLinks: SocialLink[];
+//   skills: Skill[];
+//   experiences: Experience[];
+// }
 
 
-export interface SocialLink {
-  platform: string;
-  url: string;
-  icon: string;
-}
+// export interface SocialLink {
+  
+//   platform: string;
+//   url: string;
+//   icon: string;
+// }
 
-export interface Skill {
-  name: string;
-  level: number;
-  category: string;
-}
+// export interface Skill {
+//   name: string;
+//   level: number;
+//   category: string;
+// }
 
-export interface Experience {
-  id: string;
-  company: string;
-  position: string;
-  startDate: string;
-  endDate?: string;
-  current: boolean;
-  description: string;
-  technologies: string[];
-}
+// export interface Experience {
+//   id: string;
+//   company: string;
+//   position: string;
+//   startDate: string;
+//   endDate?: string;
+//   current: boolean;
+//   description: string;
+//   technologies: string[];
+// }
 
 export interface AuthResponse {
   token: string;
@@ -156,29 +157,73 @@ export interface SkillField {
 
 
 
+// export interface SocialLink {
+//   id: string;
+//   platform: string;
+//   url: string;
+//   icon: string;
+// }
+
+// export interface Skill {
+//   id: string;
+//   name: string;
+//   level: number;
+//   category: string;
+// }
+
+// export interface Experience {
+//   id: string;
+//   company: string;
+//   position: string;
+//   startDate: string;
+//   endDate?: string;
+//   current: boolean;
+//   description: string;
+//   technologies: string[];
+// }
+
+
+
+// Extraaa
+
 export interface SocialLink {
-  id: string;
+  id?: string; // optional
   platform: string;
   url: string;
   icon: string;
 }
 
 export interface Skill {
-  id: string;
+  id?: string; // optional
   name: string;
   level: number;
   category: string;
 }
 
 export interface Experience {
-  id: string;
+  id?: string; // optional
   company: string;
   position: string;
-  startDate: string;
-  endDate?: string;
+  startDate: string; // string for form input
+  endDate?: string | null; // optional string
   current: boolean;
   description: string;
   technologies: string[];
+}
+
+export interface About {
+  id?: string; // optional for form
+  name: string;
+  title: string;
+  bio: string;
+  email: string;
+  phone?: string | null;
+  location?: string | null;
+  avatarUrl?: string | null;
+  resumeUrl?: string | null;
+  socialLinks: SocialLink[];
+  skills: Skill[];
+  experiences: Experience[];
 }
 
 

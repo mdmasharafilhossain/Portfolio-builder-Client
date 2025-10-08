@@ -31,15 +31,10 @@ export const projectSchema = z.object({
 
 
 export const socialLinkSchema = z.object({
+  id: z.string().optional(),
   platform: z.string().min(1, 'Platform is required'),
   url: z.string().url('Invalid URL'),
   icon: z.string().min(1, 'Icon is required')
-});
-
-export const skillSchema = z.object({
-  name: z.string().min(1, 'Skill name is required'),
-  level: z.number().min(0).max(100, 'Level must be between 0 and 100'),
-  category: z.string().min(1, 'Category is required')
 });
 
 export const experienceSchema = z.object({
@@ -54,49 +49,25 @@ export const experienceSchema = z.object({
 });
 
 export const aboutFormSchema = z.object({
-  name: z.string()
-    .min(1, 'Name is required')
-    .max(100, 'Name too long'),
-  
-  title: z.string()
-    .min(1, 'Title is required')
-    .max(200, 'Title too long'),
-  
-  bio: z.string()
-    .min(1, 'Bio is required')
-    .max(2000, 'Bio too long'),
-  
-  email: z.string()
-    .email('Invalid email address'),
-
-  phone: z.string()
-    .optional()
-    .nullable()
-    .or(z.literal('')), // allows empty string for form inputs
-  
-  location: z.string()
-    .optional()
-    .nullable()
-    .or(z.literal('')),
-  
-  avatarUrl: z.string()
-    .url('Invalid URL')
-    .optional()
-    .nullable()
-    .or(z.literal('')), // allows blank URL
-  
-  resumeUrl: z.string()
-    .url('Invalid URL')
-    .optional()
-    .nullable()
-    .or(z.literal('')),
-  
+  name: z.string().min(1).max(100),
+  title: z.string().min(1).max(200),
+  bio: z.string().min(1).max(2000),
+  email: z.string().email(),
+  phone: z.string().optional().nullable(),
+  location: z.string().optional().nullable(),
+  avatarUrl: z.string().url().optional().nullable().or(z.literal('')),
+  resumeUrl: z.string().url().optional().nullable().or(z.literal('')),
   socialLinks: z.array(socialLinkSchema).default([]),
-  skills: z.array(skillSchema).default([]),
-  experiences: z.array(experienceSchema).default([]),
+  skills: z.array(z.object({
+    name: z.string().min(1),
+    level: z.number().min(0).max(100),
+    category: z.string().min(1)
+  })).default([]),
+  experiences: z.array(experienceSchema).default([])
 });
 
 export type AboutFormData = z.infer<typeof aboutFormSchema>;
+
 
 
 
