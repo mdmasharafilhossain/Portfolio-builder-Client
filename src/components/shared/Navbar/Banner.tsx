@@ -41,7 +41,7 @@ const Banner = () => {
           {/* Left Content */}
           <div className="text-center lg:text-left space-y-8">
             {/* Welcome Badge */}
-            <div className="inline-flex items-center space-x-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-lg">
+            <div className="inline-flex mt-5 items-center space-x-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-lg">
               <Sparkles className="text-[#5D2F77]" size={20} />
               <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                 Welcome to my Portfolio

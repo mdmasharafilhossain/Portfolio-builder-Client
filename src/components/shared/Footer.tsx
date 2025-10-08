@@ -15,15 +15,10 @@ const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] rounded-xl blur opacity-30"></div>
-                
-              </div>
-              <span className="text-2xl font-black text-gray-900 dark:text-white">
-                Portfolio
-              </span>
-            </div>
+            <h3 className="text-xl font-black text-gray-900 dark:text-white mb-6 flex items-center">
+              <div className="w-2 h-6 bg-gradient-to-b from-[#3E1E68] to-[#5D2F77] rounded-full mr-3"></div>
+              Portfolio
+            </h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-md leading-relaxed">
               Full Stack Developer passionate about creating amazing web experiences with modern technologies. 
               Lets build something extraordinary together.
