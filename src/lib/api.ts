@@ -78,10 +78,10 @@ export const projectAPI = {
   getAll: () => api.get<ApiResponse<Project[]>>('/projects'),
   getFeatured: () => api.get<ApiResponse<Project[]>>('/projects/featured'),
   getById: (id: string) => api.get<ApiResponse<Project>>(`/projects/${id}`),
-  create: (data: Partial<Project>) => api.post<ApiResponse<Project>>('/admin/projects', data),
-  update: (id: string, data: Partial<Project>) => api.put<ApiResponse<Project>>(`/admin/projects/${id}`, data),
-  delete: (id: string) => api.delete<ApiResponse>(`/admin/projects/${id}`),
-  toggleFeatured: (id: string) => api.patch<ApiResponse<Project>>(`/admin/projects/${id}/featured`),
+  create: (data: Partial<Project>) => api.post<ApiResponse<Project>>('/projects', data),
+  update: (id: string, data: Partial<Project>) => api.put<ApiResponse<Project>>(`/projects/${id}`, data),
+  delete: (id: string) => api.delete<ApiResponse>(`/projects/${id}`),
+  toggleFeatured: (id: string) => api.patch<ApiResponse<Project>>(`/projects/${id}/featured`),
 };
 
 // About API
@@ -89,5 +89,5 @@ export const aboutAPI = {
   get: () => api.get<ApiResponse<About>>('/about'),
   getSummary: () => api.get<ApiResponse<Partial<About>>>('/about/summary'),
   update: (data: Partial<About>) => api.put<ApiResponse<About>>('/admin/about', data),
-  upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/admin/about', data),
+  upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/about', data),
 };

@@ -17,6 +17,7 @@ import {
   Menu
 } from 'lucide-react';
 import { useAuth } from '../modules/auth/AuthContext';
+import Swal from 'sweetalert2';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -40,10 +41,10 @@ const Sidebar = () => {
   }, []);
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+    // { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Blog Management', href: '/dashboard/create-blog', icon: Plus },
-    { name: 'All Projects', href: '/dashboard/projects', icon: FolderOpen },
-    { name: 'About Me', href: '/dashboard/about', icon: User },
+    { name: 'Projects Management', href: '/dashboard/projects', icon: FolderOpen },
+    { name: 'About Me Management', href: '/dashboard/about', icon: User },
     // { name: 'Blog Posts', href: '/dashboard/blogs', icon: FileText },
   ];
 
@@ -53,8 +54,41 @@ const Sidebar = () => {
   };
 
   const handleLogout = async () => {
+  const result = await Swal.fire({
+    title: 'Logout?',
+    text: 'Are you sure you want to logout?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3E1E68',
+    cancelButtonColor: '#6B7280',
+    confirmButtonText: 'Yes, logout!',
+    cancelButtonText: 'Cancel',
+    background: '#ffffff',
+    color: '#1F2937',
+    customClass: {
+      popup: 'rounded-2xl shadow-2xl',
+      confirmButton: 'bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white font-semibold py-2 px-6 rounded-xl hover:shadow-lg transition-all duration-300',
+      cancelButton: 'bg-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-xl hover:bg-gray-300 transition-all duration-300'
+    }
+  });
+
+  if (result.isConfirmed) {
     await logout();
-  };
+    
+    await Swal.fire({
+      title: 'Logged Out!',
+      text: 'You have been successfully logged out.',
+      icon: 'success',
+      confirmButtonColor: '#3E1E68',
+      background: '#ffffff',
+      color: '#1F2937',
+      customClass: {
+        popup: 'rounded-2xl shadow-2xl',
+        confirmButton: 'bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white font-semibold py-2 px-6 rounded-xl hover:shadow-lg transition-all duration-300'
+      }
+    });
+  }
+};
 
   return (
     <>

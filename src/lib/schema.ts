@@ -28,3 +28,46 @@ export const projectSchema = z.object({
   featured: z.boolean(),
   imageUrl: z.string().url('Image URL must be valid').optional().or(z.literal('')),
 });
+
+
+export const socialLinkSchema = z.object({
+  id: z.string().optional(),
+  platform: z.string().min(1, 'Platform is required'),
+  url: z.string().url('Invalid URL'),
+  icon: z.string().min(1, 'Icon is required')
+});
+
+export const experienceSchema = z.object({
+  id: z.string().optional(),
+  company: z.string().min(1, 'Company is required'),
+  position: z.string().min(1, 'Position is required'),
+  startDate: z.string().min(1, 'Start date is required'),
+  endDate: z.string().optional().nullable(),
+  current: z.boolean().default(false),
+  description: z.string().min(1, 'Description is required'),
+  technologies: z.array(z.string()).default([])
+});
+
+export const aboutFormSchema = z.object({
+  name: z.string().min(1).max(100),
+  title: z.string().min(1).max(200),
+  bio: z.string().min(1).max(2000),
+  email: z.string().email(),
+  phone: z.string().optional().nullable(),
+  location: z.string().optional().nullable(),
+  avatarUrl: z.string().url().optional().nullable().or(z.literal('')),
+  resumeUrl: z.string().url().optional().nullable().or(z.literal('')),
+  socialLinks: z.array(socialLinkSchema).default([]),
+  skills: z.array(z.object({
+    name: z.string().min(1),
+    level: z.number().min(0).max(100),
+    category: z.string().min(1)
+  })).default([]),
+  experiences: z.array(experienceSchema).default([])
+});
+
+export type AboutFormData = z.infer<typeof aboutFormSchema>;
+
+
+
+
