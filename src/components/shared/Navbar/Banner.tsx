@@ -83,7 +83,7 @@ const Banner = () => {
                 <div className="text-gray-600 dark:text-gray-400">Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-[#5D2F77] dark:text-[#A67FCF]">3+</div>
+                <div className="text-3xl font-bold text-[#5D2F77] dark:text-[#A67FCF]">1+</div>
                 <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
               </div>
               <div className="text-center">
@@ -145,43 +145,37 @@ const Banner = () => {
           </div>
 
           {/* Right Content - Visual Elements */}
-          <div className="relative">
+          <div className="relative mt-12 lg:mt-0">
             {/* Main Graphic */}
-            <div className="relative w-full max-w-lg mx-auto">
+            <div className="relative w-72 sm:w-72 md:w-80 lg:w-full max-w-lg mx-auto">
               {/* Background Circle */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] rounded-full opacity-10 blur-3xl transform scale-150"></div>
               
               {/* Floating Cards */}
-              <div className="relative space-y-6">
-                {/* Card 1 */}
-                <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-4 animate-float">
-                  <Code className="text-[#3E1E68] mb-2" size={24} />
-                  <div className="text-sm font-semibold text-gray-900 dark:text-white">Clean Code</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Quality First</div>
+              <div className="relative space-y-4 sm:space-y-6">
+                <div className="absolute -top-10 -left-6 sm:-left-10 w-24 sm:w-32 h-24 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float">
+                  <Code className="text-[#3E1E68] mb-1 sm:mb-2" size={22} />
+                  <div className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">Clean Code</div>
+                  <div className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Quality First</div>
                 </div>
 
-                {/* Card 2 */}
-                <div className="absolute top-20 -right-10 w-32 h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-4 animate-float animation-delay-1000">
-                  <Palette className="text-[#5D2F77] mb-2" size={24} />
-                  <div className="text-sm font-semibold text-gray-900 dark:text-white">Beautiful UI</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Pixel Perfect</div>
+                <div className="absolute top-16 sm:top-20 -right-6 sm:-right-10 w-24 sm:w-32 h-24 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float animation-delay-1000">
+                  <Palette className="text-[#5D2F77] mb-1 sm:mb-2" size={22} />
+                  <div className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">Beautiful UI</div>
+                  <div className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Pixel Perfect</div>
                 </div>
 
-                {/* Card 3 */}
-                <div className="absolute bottom-20 -left-5 w-32 h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-4 animate-float animation-delay-2000">
-                  <Rocket className="text-[#3E1E68] mb-2" size={24} />
-                  <div className="text-sm font-semibold text-gray-900 dark:text-white">Fast & Reliable</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">High Performance</div>
+                <div className="absolute bottom-16 sm:bottom-20 -left-4 sm:-left-5 w-24 sm:w-32 h-24 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float animation-delay-2000">
+                  <Rocket className="text-[#3E1E68] mb-1 sm:mb-2" size={22} />
+                  <div className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">Fast & Reliable</div>
+                  <div className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">High Performance</div>
                 </div>
 
-                {/* Central Avatar/Graphic */}
-                <div className="relative w-80 h-80 mx-auto bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] rounded-3xl shadow-2xl flex items-center justify-center">
+                <div className="relative w-56 sm:w-64 md:w-72 lg:w-80 h-56 sm:h-64 md:h-72 lg:h-80 mx-auto bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] rounded-3xl shadow-2xl flex items-center justify-center">
                   <div className="text-white text-center">
-                    <div className="text-6xl font-black mb-2">M</div>
-                    <div className="text-sm font-semibold opacity-90">Full Stack Dev</div>
+                    <div className="text-4xl sm:text-5xl md:text-6xl font-black mb-1 sm:mb-2">M</div>
+                    <div className="text-xs sm:text-sm font-semibold opacity-90">Full Stack Dev</div>
                   </div>
-                  
-                  {/* Animated Ring */}
                   <div className="absolute inset-0 border-4 border-[#3E1E68]/30 rounded-3xl animate-ping-slow"></div>
                 </div>
               </div>
