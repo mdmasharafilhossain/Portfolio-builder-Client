@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gradient-to-br from-white via-[#F8F5FF] to-white dark:from-gray-950 dark:via-[#1a1033] dark:to-gray-900 border-t border-gray-200/50 dark:border-gray-800/50">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-4 gap-12">
+        <div className="grid lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
                 <Linkedin size={22} />
               </a>
               <a
-                href="mailto:hello@example.com"
+                href="mailto:mashrafilmahi007@gmail.com"
                 className="p-3 bg-white dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:scale-110 border border-gray-200 dark:border-gray-800"
               >
                 <Mail size={22} />
@@ -86,28 +86,28 @@ const Footer: React.FC = () => {
             </h3>
             <div className="space-y-4">
               <a 
-                href="mailto:hello@example.com" 
-                className="flex items-center space-x-3 text-lg text-gray-600 dark:text-gray-300 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] transition-all duration-300 group"
+                href="mailto:mashrafilmahi007@gmail.com" 
+                className="flex items-start sm:items-center space-x-3 text-gray-600 dark:text-gray-300 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] transition-all duration-300 group"
               >
-                <div className="w-10 h-10 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform mt-1 sm:mt-0">
                   <Mail size={18} className="text-[#5D2F77]" />
                 </div>
-                <span className="font-medium">hello@example.com</span>
+                <span className="text-lg font-medium break-all sm:break-normal">mashrafilmahi007@gmail.com</span>
               </a>
               <a 
-                href="tel:+1234567890" 
+                href="tel:+8801641749267" 
                 className="flex items-center space-x-3 text-lg text-gray-600 dark:text-gray-300 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] transition-all duration-300 group"
               >
-                <div className="w-10 h-10 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Phone size={18} className="text-[#5D2F77]" />
                 </div>
-                <span className="font-medium">+1 (234) 567-890</span>
+                <span className="font-medium">+880 1641749267</span>
               </a>
-              <div className="flex items-center space-x-3 text-lg text-gray-600 dark:text-gray-300 group">
-                <div className="w-10 h-10 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-lg flex items-center justify-center">
+              <div className="flex items-start sm:items-center space-x-3 text-gray-600 dark:text-gray-300 group">
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-lg flex items-center justify-center mt-1 sm:mt-0">
                   <MapPin size={18} className="text-[#5D2F77]" />
                 </div>
-                <span className="font-medium">San Francisco, CA</span>
+                <span className="text-lg font-medium">Rampura,Dhaka,Bangladesh</span>
               </div>
             </div>
           </div>
@@ -116,17 +116,17 @@ const Footer: React.FC = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-200/50 dark:border-gray-800/50 mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <p className="text-gray-600 dark:text-gray-400 flex items-center text-lg font-medium">
+            <p className="text-gray-600 dark:text-gray-400 flex flex-wrap items-center justify-center text-lg font-medium text-center lg:text-left">
               © {currentYear} Portfolio. Crafted with 
               <Heart size={18} className="mx-2 text-red-500 animate-pulse" /> 
               by Mohammad Mashrafil Hossain Mahi
             </p>
             
-            <div className="flex items-center space-x-6 text-sm">
+            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm">
               <span className="text-gray-500 dark:text-gray-400 font-medium">
                 Built with Next.js & Tailwind CSS
               </span>
-              <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+              <div className="hidden sm:block w-1 h-1 bg-gray-400 rounded-full"></div>
               <span className="text-gray-500 dark:text-gray-400 font-medium">
                 Deployed on Vercel
               </span>
