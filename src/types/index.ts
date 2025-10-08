@@ -225,5 +225,8 @@ export interface About {
   skills: Skill[];
   experiences: Experience[];
 }
-
+export interface AboutEditorProps {
+  onSave?: (about: About) => void;
+  onCancel?: () => void;
+}
 

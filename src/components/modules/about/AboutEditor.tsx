@@ -1,24 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// components/admin/AboutEditor.tsx
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useForm, useFieldArray} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { About} from '@/types';
+import { About, AboutEditorProps} from '@/types';
 import { aboutAPI } from '@/lib/api';
 
 import Swal from 'sweetalert2';
 import { Save, Plus, Trash2, Eye } from 'lucide-react';
 import { AboutFormData, aboutFormSchema } from '@/lib/schema';
 
-interface AboutEditorProps {
-  onSave?: (about: About) => void;
-  onCancel?: () => void;
-}
 
-const AboutEditor: React.FC<AboutEditorProps> = ({ onSave, onCancel }) => {
+
+const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
