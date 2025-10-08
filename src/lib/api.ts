@@ -89,5 +89,5 @@ export const aboutAPI = {
   get: () => api.get<ApiResponse<About>>('/about'),
   getSummary: () => api.get<ApiResponse<Partial<About>>>('/about/summary'),
   update: (data: Partial<About>) => api.put<ApiResponse<About>>('/admin/about', data),
-  upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/admin/about', data),
+  upsert: (data: Partial<About>) => api.patch<ApiResponse<About>>('/api/about', data),
 };
