@@ -13,6 +13,7 @@ import { aboutAPI } from '@/lib/api';
 import Swal from 'sweetalert2';
 import { Save, Plus, Trash2, Eye } from 'lucide-react';
 import { AboutFormData, aboutFormSchema } from '@/lib/schema';
+import { Loader } from '@/components/shared/Loader';
 
 
 
@@ -116,6 +117,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
 
     try {
       const response = await aboutAPI.upsert(data);
+      console.log('Upsert response:', response);
       if (response.data.success) {
         await Swal.fire({
           icon: 'success',
@@ -275,11 +277,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-      </div>
-    );
+    return <Loader/>;
   }
 
   return (
