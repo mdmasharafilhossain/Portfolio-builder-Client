@@ -40,10 +40,10 @@ const Sidebar = () => {
   }, []);
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+    // { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Blog Management', href: '/dashboard/create-blog', icon: Plus },
-    { name: 'All Projects', href: '/dashboard/projects', icon: FolderOpen },
-    { name: 'About Me', href: '/dashboard/about', icon: User },
+    { name: 'Projects Management', href: '/dashboard/projects', icon: FolderOpen },
+    { name: 'About Me Management', href: '/dashboard/about', icon: User },
     // { name: 'Blog Posts', href: '/dashboard/blogs', icon: FileText },
   ];
 
