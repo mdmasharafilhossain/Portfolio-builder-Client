@@ -1,7 +1,8 @@
-// app/dashboard/layout.tsx
+
 import { AuthProvider } from "@/components/modules/auth/AuthContext";
 import Sidebar from "@/components/shared/Sidebar";
 import AuthWrapper from "@/lib/AuthWrapper";
+
 
 export default function DashboardLayout({
   children,
@@ -11,7 +12,7 @@ export default function DashboardLayout({
   
   return (
     <AuthProvider>
-      <AuthWrapper>
+     <AuthWrapper>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-[#F8F5FF] to-gray-100 dark:from-gray-950 dark:via-[#1a1033] dark:to-gray-900">
         <div className="flex">
           <Sidebar />
