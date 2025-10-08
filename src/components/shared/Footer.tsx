@@ -11,16 +11,14 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gradient-to-br from-white via-[#F8F5FF] to-white dark:from-gray-950 dark:via-[#1a1033] dark:to-gray-900 border-t border-gray-200/50 dark:border-gray-800/50">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div className="container mx-auto  px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] rounded-xl blur opacity-30"></div>
-                <div className="relative w-12 h-12 bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] rounded-xl flex items-center justify-center shadow-lg">
-                  <Sparkles className="text-white" size={24} />
-                </div>
+                
               </div>
               <span className="text-2xl font-black text-gray-900 dark:text-white">
                 Portfolio
