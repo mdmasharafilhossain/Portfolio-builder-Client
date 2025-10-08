@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface User {
@@ -47,14 +48,15 @@ export interface About {
   title: string;
   bio: string;
   email: string;
-  phone?: string;
-  location?: string;
-  avatarUrl?: string;
-  resumeUrl?: string;
+  phone?: string | null;
+  location?: string | null;
+  avatarUrl?: string | null;
+  resumeUrl?: string | null;
   socialLinks: SocialLink[];
   skills: Skill[];
   experiences: Experience[];
 }
+
 
 export interface SocialLink {
   platform: string;
@@ -137,3 +139,46 @@ export  interface ProjectCardPropsAgain {
   onDelete: (id: string, title: string) => void;
   onToggleFeatured: (project: Project) => void;
 }
+
+export interface SocialLinkField {
+  id: string;
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+export interface SkillField {
+  id: string;
+  name: string;
+  category: string;
+  level: number;
+}
+
+
+
+export interface SocialLink {
+  id: string;
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+export interface Skill {
+  id: string;
+  name: string;
+  level: number;
+  category: string;
+}
+
+export interface Experience {
+  id: string;
+  company: string;
+  position: string;
+  startDate: string;
+  endDate?: string;
+  current: boolean;
+  description: string;
+  technologies: string[];
+}
+
+
