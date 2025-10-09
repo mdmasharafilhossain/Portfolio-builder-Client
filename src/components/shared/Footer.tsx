@@ -40,12 +40,7 @@ const Footer: React.FC = () => {
               >
                 <Linkedin size={22} />
               </a>
-              {/* <a
-                href="mailto:mashrafilmahi007@gmail.com"
-                className="p-3 bg-white dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:scale-110 border border-gray-200 dark:border-gray-800"
-              >
-                <Mail size={22} />
-              </a> */}
+              
             </div>
           </div>
 
