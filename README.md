@@ -72,7 +72,7 @@ npm run dev
 ```
 ## Live URLs
 
-- **Frontend:** [Digital Wallet Live](https://digital-wallet-client-beta.vercel.app)  
+- **Frontend:** [Portfolio Builder Live](https://portfolio-builder-client-rosy.vercel.app/)  
 - **Backend:** [Portfolio Builder API](https://builder-portfolio-eta.vercel.app/)  
 
 ##  Author
