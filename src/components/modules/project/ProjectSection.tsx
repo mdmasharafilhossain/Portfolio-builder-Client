@@ -15,7 +15,7 @@ const ProjectsSection: React.FC = () => {
     const fetchProjects = async () => {
       try {
         const response = await projectAPI.getFeatured();
-        console.log('Fetched projects:', response.data);
+        
         if (response.data.success) {
           // Take only first 3 projects
           setProjects(response.data.data.slice(0, 3));

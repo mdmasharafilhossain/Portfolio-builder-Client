@@ -71,7 +71,7 @@ const Navigation: React.FC = () => {
   }
 };
 
-  console.log(user," user from nav");
+  
 
   // Helper function to check if a route is active
   const isActiveRoute = (href: string) => {

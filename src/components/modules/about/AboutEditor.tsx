@@ -124,7 +124,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
 
     try {
       const response = await aboutAPI.upsert(data);
-      console.log('Upsert response:', response);
+      
       if (response.data.success) {
         await MySwal.fire({
           icon: 'success',

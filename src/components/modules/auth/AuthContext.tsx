@@ -58,7 +58,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (response.data.success) {
         const { user } = response.data.data;
         setUser(user);
-        console.log(user," user after login");
+       
         await Swal.fire({
           icon: 'success',
           title: 'Welcome back!',
