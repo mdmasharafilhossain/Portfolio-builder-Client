@@ -4,11 +4,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-  LayoutDashboard, 
-  FileText, 
+  
   FolderOpen, 
   User, 
-  Settings,
+ 
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -25,7 +24,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const { user, logout } = useAuth();
 
-  // Collapse by default on mobile
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -93,7 +92,7 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile Toggle Button */}
+      
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         className="md:hidden fixed top-4 left-1 z-50 bg-white dark:bg-gray-900 p-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
@@ -101,7 +100,7 @@ const Sidebar = () => {
         <Menu size={20} className="text-[#5D2F77]" />
       </button>
 
-      {/* Sidebar */}
+     
       <div
   className={`bg-white dark:bg-gray-900/90 backdrop-blur-xl border-r border-gray-200 dark:border-gray-800 shadow-2xl transition-all duration-300 flex flex-col
   ${isCollapsed ? 'w-20' : 'w-64'}
@@ -110,7 +109,7 @@ const Sidebar = () => {
   md:transition-none transform`}
 >
 
-        {/* Header */}
+       
         <div className="p-6 border-b border-gray-200 dark:border-gray-800">
           <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
             {!isCollapsed && (
@@ -135,7 +134,7 @@ const Sidebar = () => {
           </div>
         </div>
 
-        {/* Navigation */}
+      
         <nav className="flex-1 p-4 overflow-y-auto">
           <ul className="space-y-2">
             {navigation.map((item) => {
@@ -163,7 +162,7 @@ const Sidebar = () => {
           </ul>
         </nav>
 
-        {/* User Section */}
+       
         <div className="p-4 border-t border-gray-200 dark:border-gray-800">
           <div
             className={`flex items-center space-x-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 mb-4 ${
