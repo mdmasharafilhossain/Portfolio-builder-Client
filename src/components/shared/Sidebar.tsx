@@ -87,6 +87,7 @@ const Sidebar = () => {
         confirmButton: 'bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white font-semibold py-2 px-6 rounded-xl hover:shadow-lg transition-all duration-300'
       }
     });
+    window.location.href = "/login";
   }
 };
 
