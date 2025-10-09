@@ -9,10 +9,17 @@ import Swal from 'sweetalert2';
 
 
 import { Plus, Edit, Trash2, Eye, Search, FileText, Sparkles, BarChart3, Calendar, User } from 'lucide-react';
-import BlogEditor from './BlogEditor';
+import dynamic from 'next/dynamic';
 import { Loader } from '@/components/shared/Loader';
 
-
+const BlogEditor = dynamic(() => import('./BlogEditor'), {
+  loading: () => (
+    <div className="flex items-center justify-center h-screen text-gray-500">
+      Loading editor...
+    </div>
+  ),
+  ssr: false, 
+});
 
 export default function BlogManagement() {
   const [blogs, setBlogs] = useState<Blog[]>([]);

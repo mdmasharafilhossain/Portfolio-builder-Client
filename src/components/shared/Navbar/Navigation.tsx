@@ -27,7 +27,7 @@ const Navigation: React.FC = () => {
     { name: 'About', href: '/about' },
     { name: 'Projects', href: '/projects' },
     { name: 'Blog', href: '/blogs' },
-    { name: 'Contact', href: '/#contact' },
+   
   ];
 
   const handleLogout = async () => {
@@ -81,11 +81,11 @@ const Navigation: React.FC = () => {
     return pathname.startsWith(href);
   };
   if (loading) {
-    return <Loader/>; // or a loading spinner
+    return <Loader/>; 
   }
 
   return (
-    <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 sticky top-0 z-50 shadow-sm">
+    <nav className="bg-white/80 sticky top-0  dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50  z-50 shadow-sm">
       <div className="container mx-auto  px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -151,7 +151,7 @@ const Navigation: React.FC = () => {
                     </div>
                     
                     <Link
-                      href="/dashboard"
+                      href="/dashboard/create-blog"
                       className={`flex items-center space-x-3 px-4 py-3 transition-all duration-200 group/item ${
                         isActiveRoute('/dashboard')
                           ? 'bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/20 dark:to-[#5D2F77]/20 text-[#3E1E68] dark:text-[#8B5FBF]'

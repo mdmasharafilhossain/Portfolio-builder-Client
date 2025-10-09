@@ -92,27 +92,57 @@ const ProjectEditor: React.FC<ProjectEditorProps> = ({ project, onSave, onCancel
     }
   };
 
-  const onSubmit: SubmitHandler<ProjectFormValues> = async (data) => {
-    setLoading(true);
-    try {
-      let response;
-      if (mode === 'create') {
-        response = await projectAPI.create(data);
-      } else {
-        response = await projectAPI.update(project!.id, data);
-      }
 
-      if (response.data.success) {
-        onSave(response.data.data);
-        toast.success(`Project ${mode === 'create' ? 'created' : 'updated'} successfully!`);
-      }
-    } catch (error: any) {
-      const message = error.response?.data?.message || `Failed to ${mode} project`;
-      toast.error(message);
-    } finally {
-      setLoading(false);
+
+const onSubmit: SubmitHandler<ProjectFormValues> = async (data) => {
+  setLoading(true);
+
+  try {
+    let response;
+    if (mode === 'create') {
+      response = await projectAPI.create(data);
+    } else {
+      response = await projectAPI.update(project!.id, data);
     }
-  };
+
+    if (response.data.success) {
+      onSave(response.data.data);
+
+      await Swal.fire({
+        title: 'Success!',
+        text: `Project ${mode === 'create' ? 'created' : 'updated'} successfully!`,
+        icon: 'success',
+        confirmButtonColor: '#3E1E68',
+        background: '#ffffff',
+        color: '#1F2937',
+        customClass: {
+          popup: 'rounded-2xl shadow-2xl',
+          confirmButton:
+            'bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white font-semibold py-2 px-6 rounded-xl hover:shadow-lg transition-all duration-300',
+        },
+      });
+    }
+  } catch (error: any) {
+    const message = error.response?.data?.message || `Failed to ${mode} project`;
+
+    await Swal.fire({
+      title: 'Error!',
+      text: message,
+      icon: 'error',
+      confirmButtonColor: '#E02424',
+      background: '#ffffff',
+      color: '#1F2937',
+      customClass: {
+        popup: 'rounded-2xl shadow-2xl',
+        confirmButton:
+          'bg-gradient-to-r from-[#E02424] to-[#FF5A5A] text-white font-semibold py-2 px-6 rounded-xl hover:shadow-lg transition-all duration-300',
+      },
+    });
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-[#F8F5FF] to-gray-100 dark:from-gray-950 dark:via-[#1a1033] dark:to-gray-900 p-4">

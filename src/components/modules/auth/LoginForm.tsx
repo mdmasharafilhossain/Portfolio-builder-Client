@@ -36,7 +36,7 @@ export default function LoginForm() {
     try {
       await login(data.email, data.password);
      
-      router.push('/dashboard');
+      router.push('/dashboard/create-blog');
     } catch (error: any) {
       const message =
         error.response?.data?.message || 'Something went wrong. Please try again.';

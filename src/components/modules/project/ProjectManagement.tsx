@@ -12,11 +12,19 @@ import Swal from 'sweetalert2';
 
 import { Plus, Edit, Trash2, Eye, Search, Filter, Star, ExternalLink, Github, Code,  BarChart3 } from 'lucide-react';
 import Image from 'next/image';
-import ProjectEditor from './ProjectEditor';
+
 import { Loader } from '@/components/shared/Loader';
+import dynamic from 'next/dynamic';
 
 const MySwal = Swal;
-
+const ProjectEditor = dynamic(() => import('./ProjectEditor'), {
+  loading: () => (
+    <div className="flex items-center justify-center h-screen text-gray-500">
+      Loading editor...
+    </div>
+  ),
+  ssr: false, 
+});
 const ProjectManagement: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);

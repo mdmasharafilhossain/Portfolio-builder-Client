@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Github, Linkedin, Mail, Download, Sparkles, Code, Palette, Rocket } from 'lucide-react';
+import { ArrowRight, Github, Linkedin,  Download, Sparkles, Code, Palette, Rocket } from 'lucide-react';
 
 const Banner = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -102,19 +102,13 @@ const Banner = () => {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               
-              <Link
-                href="/contact"
-                className="group inline-flex items-center space-x-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold px-8 py-4 rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <span>Get In Touch</span>
-                <Mail size={20} className="group-hover:scale-110 transition-transform" />
-              </Link>
+              
             </div>
 
             {/* Social Links */}
             <div className="flex justify-center lg:justify-start space-x-4 pt-4">
               <a
-                href="https://github.com"
+                href="https://github.com/mdmasharafilhossain"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:shadow-lg transition-all duration-300 hover:scale-110"
@@ -122,25 +116,30 @@ const Banner = () => {
                 <Github size={22} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/mdmashrafilhossain22/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:shadow-lg transition-all duration-300 hover:scale-110"
               >
                 <Linkedin size={22} />
               </a>
-              <a
-                href="mailto:hello@example.com"
-                className="p-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:shadow-lg transition-all duration-300 hover:scale-110"
-              >
-                <Mail size={22} />
-              </a>
-              <a
-                href="/resume.pdf"
-                className="p-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:shadow-lg transition-all duration-300 hover:scale-110"
-              >
-                <Download size={22} />
-              </a>
+              {/* <a
+  href="mailto:mashrafilmahi007@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20there!"
+  className="p-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:shadow-lg transition-all duration-300 hover:scale-110"
+>
+  <Mail size={22} />
+</a> */}
+
+
+              <Link
+  href="https://drive.google.com/file/d/1ZihqBGZph-NOpvjIAv6eFAhsHNOoAh-0/view?usp=drive_link"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="p-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-[#3E1E68] dark:hover:text-[#8B5FBF] hover:shadow-lg transition-all duration-300 hover:scale-110"
+>
+  <Download size={22} />
+</Link>
+
             </div>
           </div>
 
