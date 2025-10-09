@@ -10,26 +10,45 @@ export default function AuthWrapper({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
+    if (!loading) {
+
+      if (!user) {
+        Swal.fire({
+          title: 'Unauthorized Access',
+          text: 'You need to log in to access the dashboard.',
+          icon: 'error',
+          confirmButtonText: 'Go to Login',
+          confirmButtonColor: '#5D2F77',
+          background: '#1a1033',
+          color: '#ffffff',
+          iconColor: '#8B5CF6',
+          customClass: {
+            popup: 'rounded-2xl shadow-2xl border border-purple-500/20',
+            title: 'font-semibold text-xl',
+            confirmButton:
+              'px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105',
+          },
+        }).then(() => router.push('/login'));
+      }
     
-    if (!loading && !user) {
-      Swal.fire({
-        title: 'Unauthorized Access',
-        text: 'You need to log in to access the dashboard.',
-        icon: 'error',
-        confirmButtonText: 'Go to Login',
-        confirmButtonColor: '#5D2F77',
-        background: '#1a1033',
-        color: '#ffffff',
-        iconColor: '#8B5CF6',
-        customClass: {
-          popup: 'rounded-2xl shadow-2xl border border-purple-500/20',
-          title: 'font-semibold text-xl',
-          confirmButton:
-            'px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105',
-        },
-      }).then(() => {
-        router.push('/login');
-      });
+      else if (user.role !== 'ADMIN') {
+        Swal.fire({
+          title: 'Access Denied',
+          text: 'You do not have permission to access this section.',
+          icon: 'warning',
+          confirmButtonText: 'Go Back',
+          confirmButtonColor: '#EAB308',
+          background: '#1a1033',
+          color: '#ffffff',
+          iconColor: '#FACC15',
+          customClass: {
+            popup: 'rounded-2xl shadow-2xl border border-yellow-500/20',
+            title: 'font-semibold text-xl',
+            confirmButton:
+              'px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105',
+          },
+        }).then(() => router.push('/'));
+      }
     }
   }, [user, loading, router]);
 
@@ -53,6 +72,9 @@ export default function AuthWrapper({ children }: { children: ReactNode }) {
     );
   }
 
-  if (!user) return null; 
+  
+  if (!user || user.role !== 'ADMIN') return null;
+
+
   return <>{children}</>;
 }
