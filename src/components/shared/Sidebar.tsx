@@ -13,7 +13,8 @@ import {
   ChevronRight,
   Plus,
   Sparkles,
-  Menu
+  Menu,
+  Home
 } from 'lucide-react';
 import { useAuth } from '../modules/auth/AuthContext';
 import Swal from 'sweetalert2';
@@ -44,7 +45,7 @@ const Sidebar = () => {
     { name: 'Blog Management', href: '/dashboard/create-blog', icon: Plus },
     { name: 'Projects Management', href: '/dashboard/projects', icon: FolderOpen },
     { name: 'About Me Management', href: '/dashboard/about', icon: User },
-    // { name: 'Blog Posts', href: '/dashboard/blogs', icon: FileText },
+    { name: 'Go to Home', href: '/', icon: Home },
   ];
 
   const isActiveRoute = (href: string) => {
