@@ -49,9 +49,11 @@ const Sidebar = () => {
   ];
 
   const isActiveRoute = (href: string) => {
-    if (href === '/dashboard') return pathname === '/dashboard';
-    return pathname.startsWith(href);
-  };
+  if (href === '/') return pathname === '/';
+  if (href === '/dashboard') return pathname === '/dashboard';
+  return pathname.startsWith(href);
+};
+
 
   const handleLogout = async () => {
   const result = await Swal.fire({
