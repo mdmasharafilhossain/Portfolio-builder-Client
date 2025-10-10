@@ -59,14 +59,15 @@ const Banner = () => {
               
               {/* Animated Role Text */}
               <div className="h-20 flex items-center justify-center lg:justify-start">
-                <div className="text-2xl md:text-4xl font-bold text-gray-600 dark:text-gray-400">
-                  I'm a{' '}
-                  <span className="bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] bg-clip-text text-transparent animate-typing">
-                    {roles[currentRole]}
-                  </span>
-                  <span className="animate-blink">|</span>
-                </div>
-              </div>
+  <div className="text-2xl md:text-4xl font-bold text-gray-600 dark:text-gray-400 whitespace-nowrap flex items-center">
+    I'm a{' '}
+    <span className="bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] bg-clip-text text-transparent animate-typing ml-2">
+      {roles[currentRole]}
+    </span>
+    <span className="animate-blink">|</span>
+  </div>
+</div>
+
             </div>
 
             {/* Description */}
