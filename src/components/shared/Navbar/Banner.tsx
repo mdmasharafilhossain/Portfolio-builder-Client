@@ -153,19 +153,19 @@ const Banner = () => {
               
               {/* Floating Cards */}
               <div className="relative space-y-4 sm:space-y-6">
-                <div className="absolute -top-10 -left-6 sm:-left-10 w-24 sm:w-32 h-24 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float">
+                <div className="absolute -top-16 -left-6 sm:-left-10 w-24 sm:w-32 h-24 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float">
                   <Code className="text-[#3E1E68] mb-1 sm:mb-2" size={22} />
                   <div className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">Clean Code</div>
                   <div className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Quality First</div>
                 </div>
 
-                <div className="absolute top-16 sm:top-20 -right-6 sm:-right-10 w-24 sm:w-32 h-24 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float animation-delay-1000">
+                <div className="absolute top-16 sm:top-20 -right-14 sm:-right-10 w-24 sm:w-32 h-24 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float animation-delay-1000">
                   <Palette className="text-[#5D2F77] mb-1 sm:mb-2" size={22} />
                   <div className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">Beautiful UI</div>
                   <div className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Pixel Perfect</div>
                 </div>
 
-                <div className="absolute bottom-16 sm:bottom-20 -left-4 sm:-left-5 w-24 sm:w-32 h-28 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float animation-delay-2000">
+                <div className="absolute bottom-16 sm:bottom-20 -left-14 sm:-left-5 w-24 sm:w-32 h-28 sm:h-32 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl p-3 sm:p-4 animate-float animation-delay-2000">
                   <Rocket className="text-[#3E1E68] mb-1 sm:mb-2" size={22} />
                   <div className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">Fast & Reliable</div>
                   <div className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">High Performance</div>
