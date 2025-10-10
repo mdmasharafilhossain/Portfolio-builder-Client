@@ -239,7 +239,7 @@ const Navigation: React.FC = () => {
                       <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
                     </div>
                     <Link
-                      href="/dashboard"
+                      href="/dashboard/create-blog"
                       className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                         isActiveRoute('/dashboard')
                           ? 'bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/20 dark:to-[#5D2F77]/20 text-[#3E1E68] dark:text-[#8B5FBF]'

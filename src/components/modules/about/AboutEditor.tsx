@@ -580,76 +580,87 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
             </section>
 
             {/* Social Links */}
-            <section className="space-y-6">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-8 h-8 bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] rounded-xl flex items-center justify-center">
-                  <Link2 className="text-white" size={16} />
-                </div>
-                <h3 className="text-2xl font-black text-gray-900 dark:text-white">
-                  Social Links
-                </h3>
-              </div>
-              
-              {/* Add New Social Link */}
-              <div className="grid md:grid-cols-3 gap-4 p-6 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-2xl border border-[#3E1E68]/10 dark:border-[#5D2F77]/20">
-                <input
-                  type="text"
-                  value={newSocialLink.platform}
-                  onChange={(e) => setNewSocialLink(prev => ({ ...prev, platform: e.target.value }))}
-                  className="px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                  placeholder="Platform (e.g., GitHub)"
-                />
-                <input
-                  type="url"
-                  value={newSocialLink.url}
-                  onChange={(e) => setNewSocialLink(prev => ({ ...prev, url: e.target.value }))}
-                  className="px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                  placeholder="https://github.com/username"
-                />
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={newSocialLink.icon}
-                    onChange={(e) => setNewSocialLink(prev => ({ ...prev, icon: e.target.value }))}
-                    className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                    placeholder="github, linkedin, etc."
-                  />
-                  <button
-                    type="button"
-                    onClick={addSocialLink}
-                    className="flex items-center space-x-1 px-4 py-3 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 font-semibold"
-                  >
-                    <Plus size={16} />
-                  </button>
-                </div>
-              </div>
+           <section className="space-y-6">
+  {/* Section Header */}
+  <div className="flex flex-col sm:flex-row items-start sm:items-center sm:space-x-3 mb-6 space-y-2 sm:space-y-0">
+    <div className="w-8 h-8 bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] rounded-xl flex items-center justify-center">
+      <Link2 className="text-white" size={16} />
+    </div>
+    <h3 className="text-2xl font-black text-gray-900 dark:text-white">
+      Social Links
+    </h3>
+  </div>
 
-              {/* Existing Social Links */}
-              <div className="space-y-3">
-                {socialLinksFields.map((field, index) => (
-                  <div key={field.id} className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
-                    <div className="flex-1 grid grid-cols-3 gap-4">
-                      <span className="font-semibold text-gray-900 dark:text-white">
-                        {field.platform}
-                      </span>
-                      <span className="text-gray-600 dark:text-gray-400 truncate">
-                        {field.url}
-                      </span>
-                      <span className="text-gray-500 dark:text-gray-500">
-                        {field.icon}
-                      </span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => confirmRemoveSocialLink(index)}
-                      className="p-2 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 text-red-600 dark:text-red-400 rounded-xl border border-red-200 dark:border-red-800 hover:shadow-lg transition-all duration-300 hover:scale-105"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </section>
+  {/* Add New Social Link */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 rounded-2xl border border-[#3E1E68]/10 dark:border-[#5D2F77]/20">
+    <input
+      type="text"
+      value={newSocialLink.platform}
+      onChange={(e) =>
+        setNewSocialLink((prev) => ({ ...prev, platform: e.target.value }))
+      }
+      className="px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+      placeholder="Platform (e.g., GitHub)"
+    />
+    <input
+      type="url"
+      value={newSocialLink.url}
+      onChange={(e) =>
+        setNewSocialLink((prev) => ({ ...prev, url: e.target.value }))
+      }
+      className="px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+      placeholder="https://github.com/username"
+    />
+    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+      <input
+        type="text"
+        value={newSocialLink.icon}
+        onChange={(e) =>
+          setNewSocialLink((prev) => ({ ...prev, icon: e.target.value }))
+        }
+        className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+        placeholder="github, linkedin, etc."
+      />
+      <button
+        type="button"
+        onClick={addSocialLink}
+        className="flex items-center justify-center space-x-1 px-4 py-3 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 font-semibold"
+      >
+        <Plus size={16} />
+      </button>
+    </div>
+  </div>
+
+  {/* Existing Social Links */}
+  <div className="space-y-3">
+    {socialLinksFields.map((field, index) => (
+      <div
+        key={field.id}
+        className="flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
+      >
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
+          <span className="font-semibold text-gray-900 dark:text-white">
+            {field.platform}
+          </span>
+          <span className="text-gray-600 dark:text-gray-400 truncate">
+            {field.url}
+          </span>
+          <span className="text-gray-500 dark:text-gray-500">
+            {field.icon}
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={() => confirmRemoveSocialLink(index)}
+          className="self-end md:self-auto p-2 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 text-red-600 dark:text-red-400 rounded-xl border border-red-200 dark:border-red-800 hover:shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          <Trash2 size={16} />
+        </button>
+      </div>
+    ))}
+  </div>
+</section>
+
 
             {/* Skills Section */}
             <section className="space-y-6">
@@ -700,39 +711,43 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
 
               {/* Existing Skills */}
               <div className="space-y-4">
-                {skillsFields.map((field, index) => (
-                  <div key={field.id} className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <span className="text-lg font-bold text-gray-900 dark:text-white">
-                          {field.name}
-                        </span>
-                        <span className="ml-3 px-3 py-1 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/20 dark:to-[#5D2F77]/20 text-[#3E1E68] dark:text-[#8B5FBF] rounded-full text-sm font-semibold">
-                          {field.category}
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-4">
-                        <span className="text-lg font-bold text-[#3E1E68] dark:text-[#8B5FBF]">
-                          {field.level}%
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => confirmRemoveSkill(index)}
-                          className="p-2 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 text-red-600 dark:text-red-400 rounded-xl border border-red-200 dark:border-red-800 hover:shadow-lg transition-all duration-300 hover:scale-105"
-                        >
-                          <Trash2 size={16} />
-                        </button>
-                      </div>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                      <div
-                        className="bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] h-3 rounded-full transition-all duration-500 shadow-lg"
-                        style={{ width: `${field.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+  {skillsFields.map((field, index) => (
+    <div
+      key={field.id}
+      className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300"
+    >
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 space-y-3 sm:space-y-0">
+        <div>
+          <span className="text-lg font-bold text-gray-900 dark:text-white">
+            {field.name}
+          </span>
+          <span className="ml-0 sm:ml-3 mt-2 sm:mt-0 inline-block px-3 py-1 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/20 dark:to-[#5D2F77]/20 text-[#3E1E68] dark:text-[#8B5FBF] rounded-full text-sm font-semibold">
+            {field.category}
+          </span>
+        </div>
+        <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-4">
+          <span className="text-lg font-bold text-[#3E1E68] dark:text-[#8B5FBF]">
+            {field.level}%
+          </span>
+          <button
+            type="button"
+            onClick={() => confirmRemoveSkill(index)}
+            className="p-2 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/10 dark:to-[#5D2F77]/10 text-red-600 dark:text-red-400 rounded-xl border border-red-200 dark:border-red-800 hover:shadow-lg transition-all duration-300 hover:scale-105"
+          >
+            <Trash2 size={16} />
+          </button>
+        </div>
+      </div>
+      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+        <div
+          className="bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] h-3 rounded-full transition-all duration-500 shadow-lg"
+          style={{ width: `${field.level}%` }}
+        />
+      </div>
+    </div>
+  ))}
+</div>
+
             </section>
 
             {/* Experience Section */}
@@ -803,49 +818,54 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
 
                 {/* Technologies for Experience */}
                 <div>
-                  <label className="block text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    Technologies Used
-                  </label>
-                  <div className="flex space-x-3 mb-3">
-                    <input
-                      type="text"
-                      value={newTech}
-                      onChange={(e) => setNewTech(e.target.value)}
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault();
-                          addTechnologyToExperience();
-                        }
-                      }}
-                      className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                      placeholder="Add technology"
-                    />
-                    <button
-                      type="button"
-                      onClick={addTechnologyToExperience}
-                      className="flex items-center space-x-2 px-4 py-3 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 font-semibold"
-                    >
-                      <Plus size={16} />
-                    </button>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {newExperience.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/20 dark:to-[#5D2F77]/20 text-[#3E1E68] dark:text-[#8B5FBF] rounded-full text-sm font-semibold border border-[#3E1E68]/10 dark:border-[#5D2F77]/20 transition-all duration-300 hover:scale-105"
-                      >
-                        {tech}
-                        <button
-                          type="button"
-                          onClick={() => removeTechnologyFromExperience(index)}
-                          className="ml-2 hover:text-red-600 transition-colors"
-                        >
-                          <Trash2 size={12} />
-                        </button>
-                      </span>
-                    ))}
-                  </div>
-                </div>
+  <label className="block text-lg font-semibold text-gray-900 dark:text-white mb-3">
+    Technologies Used
+  </label>
+
+  {/* Input and Add Button */}
+  <div className="flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0 mb-3">
+    <input
+      type="text"
+      value={newTech}
+      onChange={(e) => setNewTech(e.target.value)}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addTechnologyToExperience();
+        }
+      }}
+      className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-[#3E1E68]/20 focus:border-[#3E1E68] transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+      placeholder="Add technology"
+    />
+    <button
+      type="button"
+      onClick={addTechnologyToExperience}
+      className="flex items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 font-semibold"
+    >
+      <Plus size={16} />
+    </button>
+  </div>
+
+  {/* Technologies List */}
+  <div className="flex flex-wrap gap-2">
+    {newExperience.technologies.map((tech, index) => (
+      <span
+        key={index}
+        className="inline-flex items-center justify-between max-w-full break-words px-3 py-1.5 bg-gradient-to-r from-[#F8F5FF] to-[#EDE7F6] dark:from-[#3E1E68]/20 dark:to-[#5D2F77]/20 text-[#3E1E68] dark:text-[#8B5FBF] rounded-full text-sm font-semibold border border-[#3E1E68]/10 dark:border-[#5D2F77]/20 transition-all duration-300 hover:scale-105"
+      >
+        <span className="truncate">{tech}</span>
+        <button
+          type="button"
+          onClick={() => removeTechnologyFromExperience(index)}
+          className="ml-2 shrink-0 hover:text-red-600 transition-colors"
+        >
+          <Trash2 size={12} />
+        </button>
+      </span>
+    ))}
+  </div>
+</div>
+
 
                 <button
                   type="button"
