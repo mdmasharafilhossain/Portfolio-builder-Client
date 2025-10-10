@@ -71,7 +71,7 @@ export default async function BlogsPage() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
-                Our <span className="bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] bg-clip-text text-transparent">Blog</span>
+                My <span className="bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] bg-clip-text text-transparent">Blogs</span>
               </h1>
               
               <div className="max-w-2xl mx-auto">

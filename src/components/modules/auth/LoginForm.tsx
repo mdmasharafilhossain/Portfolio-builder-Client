@@ -38,13 +38,7 @@ export default function LoginForm() {
      
       router.push('/dashboard/create-blog');
     } catch (error: any) {
-      const message =
-        error.response?.data?.message || 'Something went wrong. Please try again.';
-      await Swal.fire({
-        icon: 'error',
-        title: 'Login Failed',
-        text: message,
-      });
+      
     } finally {
       setLoading(false);
     }

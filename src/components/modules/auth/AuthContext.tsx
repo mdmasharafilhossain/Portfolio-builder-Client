@@ -60,20 +60,73 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setUser(user);
        
         await Swal.fire({
-          icon: 'success',
-          title: 'Welcome back!',
-          text: `Hello, ${response.data?.data?.user?.name || 'User'} 👋`,
-          timer: 2000,
-          showConfirmButton: false,
-        });
+  icon: 'success',
+  title: 'Welcome back!',
+  text: `Hello, ${response.data?.data?.user?.name || 'User'} `,
+  timer: 2000,
+  showConfirmButton: false,
+  background: '#1a1033',
+  color: '#ffffff',
+  customClass: {
+    popup: 'rounded-3xl border border-purple-500/20 shadow-2xl shadow-purple-500/20',
+    title: 'text-2xl font-bold bg-gradient-to-r from-[#3E1E68] to-[#5D2F77] bg-clip-text text-transparent',
+    icon: '!border-none !scale-125',
+    container: 'backdrop-blur-sm'
+  },
+  iconHtml: `
+    <div class="relative">
+      <div class="w-20 h-20 bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] rounded-full flex items-center justify-center relative">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-[#3E1E68] to-[#5D2F77] blur-sm opacity-75 animate-pulse"></div>
+      </div>
+    </div>
+  `,
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown animate__faster'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp animate__faster'
+  }
+});
       }
     } catch (error: any) {
       const message = error.response?.data?.message || 'Login failed';
-      await Swal.fire({
-        icon: 'error',
-        title: 'Login Failed',
-        text: message,
-      });
+     await Swal.fire({
+  icon: 'error',
+  title: 'Login Failed',
+  text: message,
+  background: '#1a1033',
+  color: '#ffffff',
+  customClass: {
+    popup: 'rounded-3xl border border-red-500/20 shadow-2xl shadow-red-500/20',
+    title: 'text-2xl font-bold text-white',
+    htmlContainer: 'text-gray-200',
+    icon: '!border-none !scale-125',
+    container: 'backdrop-blur-sm'
+  },
+  iconHtml: `
+    <div class="relative">
+      <div class="w-20 h-20 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center relative">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-red-600 to-red-700 blur-sm opacity-75 animate-pulse"></div>
+      </div>
+    </div>
+  `,
+  showClass: {
+    popup: 'animate__animated animate__shakeX animate__faster'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp animate__faster'
+  },
+  confirmButtonText: 'Try Again',
+  confirmButtonColor: '#5D2F77',
+  buttonsStyling: false,
+ 
+});
       throw error;
     } finally {
       setLoading(false);
