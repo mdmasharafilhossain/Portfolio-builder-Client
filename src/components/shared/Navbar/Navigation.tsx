@@ -73,7 +73,7 @@ const Navigation: React.FC = () => {
 
   
 
-  // Helper function to check if a route is active
+  
   const isActiveRoute = (href: string) => {
     if (href === '/') {
       return pathname === '/';

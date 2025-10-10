@@ -6,7 +6,8 @@ import { Github, ExternalLink, ArrowRight, Star } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { projectAPI } from '@/lib/api';
-
+import { Loader } from '@/components/shared/Loader';
+export const revalidate = 60;
 const ProjectsSection: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,30 +32,7 @@ const ProjectsSection: React.FC = () => {
   }, []);
 
   if (loading) {
-    return (
-      <section id="projects" className="py-20 bg-gradient-to-br from-white via-[#F8F5FF] to-white dark:from-gray-950 dark:via-[#1a1033] dark:to-gray-950">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-10 bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-800 dark:to-gray-700 rounded-full w-48 mx-auto mb-4"></div>
-            <div className="h-6 bg-gray-300 dark:bg-gray-800 rounded w-2/3 mx-auto mb-16"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="animate-pulse">
-                  <div className="bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-800 dark:to-gray-700 h-56 rounded-2xl mb-6"></div>
-                  <div className="h-5 bg-gray-300 dark:bg-gray-800 rounded mb-3"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-800 rounded mb-2 w-5/6"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-800 rounded mb-4 w-2/3"></div>
-                  <div className="flex gap-2 mb-4">
-                    <div className="h-6 bg-gray-300 dark:bg-gray-800 rounded-full w-16"></div>
-                    <div className="h-6 bg-gray-300 dark:bg-gray-800 rounded-full w-20"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
+    return <Loader/>
   }
 
   return (

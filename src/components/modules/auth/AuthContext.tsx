@@ -22,7 +22,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  // Fetch current user on mount
+  
   useEffect(() => {
     checkAuth();
   }, []);
@@ -33,15 +33,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (response.data.success) {
         setUser(response.data.data.user);
       } else {
-        // If verify returns success: false, clear user
+        
         setUser(null);
       }
     } catch (error: any) {
       console.error('Auth check failed:', error);
-      // Clear user on any error (token expired, network error, etc.)
+     
       setUser(null);
       
-      // Only show toast for specific errors, not for general auth failures
+     
       if (error.response?.status !== 401 && error.response?.status !== 403) {
         console.warn('Authentication check failed:', error.message);
       }
@@ -49,7 +49,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setLoading(false);
     }
   };
-  // ✅ Login
+  
   const login = async (email: string, password: string) => {
     try {
       setLoading(true);
@@ -80,7 +80,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // ✅ Register
+ 
   const register = async (email: string, password: string, name: string) => {
     try {
       setLoading(true);
@@ -109,7 +109,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // ✅ Logout
+  
   const logout = async () => {
     try {
       await authAPI.logout();
@@ -121,7 +121,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // ✅ Update user info in context
+  
   const updateUser = (userData: Partial<User>) => {
     setUser(prev => (prev ? { ...prev, ...userData } : null));
   };
@@ -139,7 +139,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-// ✅ Custom hook
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {

@@ -141,7 +141,7 @@ const ProjectManagement: React.FC = () => {
     }
   };
 
-  // Filter projects based on search and filter criteria
+
   const filteredProjects = projects.filter(project => {
     const matchesSearch = searchTerm === '' || 
       project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

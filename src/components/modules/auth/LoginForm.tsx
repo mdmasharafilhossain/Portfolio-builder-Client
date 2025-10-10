@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Swal from 'sweetalert2';
-import { Mail, Lock, Eye, EyeOff, Sparkles, ArrowLeft } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { useAuth } from './AuthContext';
 import { loginSchema } from '@/lib/schema';
 
@@ -124,7 +124,7 @@ export default function LoginForm() {
               )}
             </div>
 
-            {/* Submit Button */}
+            
             <button
               type="submit"
               disabled={loading}
@@ -138,7 +138,7 @@ export default function LoginForm() {
               ) : (
                 <span className="flex items-center space-x-2">
                   <span>Sign In</span>
-                  <Sparkles size={18} className="transition-transform group-hover:scale-110" />
+                 
                 </span>
               )}
             </button>

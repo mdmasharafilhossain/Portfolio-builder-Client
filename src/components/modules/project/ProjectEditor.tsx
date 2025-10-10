@@ -8,10 +8,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ProjectEditorProps } from '@/types';
 import { projectAPI } from '@/lib/api';
-import toast from 'react-hot-toast';
+
 import Swal from 'sweetalert2';
 
-import { Save, X, Eye, Plus, Trash2, Code, Globe, Github, Image as ImageIcon, Sparkles, Settings } from 'lucide-react';
+import { Save, X, Eye, Plus, Trash2, Globe, Github, Image as ImageIcon, Sparkles, Settings } from 'lucide-react';
 import Image from 'next/image';
 import { projectSchema } from '@/lib/schema';
 

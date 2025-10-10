@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm, useFieldArray} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { About, AboutEditorProps} from '@/types';
+import {  AboutEditorProps} from '@/types';
 import { aboutAPI } from '@/lib/api';
 
 import Swal from 'sweetalert2';
@@ -76,7 +76,7 @@ const AboutEditor: React.FC<AboutEditorProps> = ({ onSave }) => {
     name: 'experiences'
   });
 
-  // New item states
+
   const [newSocialLink, setNewSocialLink] = useState({ platform: '', url: '', icon: '' });
   const [newSkill, setNewSkill] = useState({ name: '', level: 50, category: '' });
   const [newExperience, setNewExperience] = useState({
