@@ -299,13 +299,7 @@ export default async function AboutPage() {
                 Interested in collaborating on a project? I am always open to discussing new opportunities and innovative ideas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href={`mailto:${aboutData.email}`}
-                  className="inline-flex items-center space-x-3 bg-white text-[#3E1E68] font-semibold px-8 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                >
-                  <Mail size={20} />
-                  <span>Get In Touch</span>
-                </a>
+               
                 {aboutData.resumeUrl && (
                   <a
                     href={aboutData.resumeUrl}
